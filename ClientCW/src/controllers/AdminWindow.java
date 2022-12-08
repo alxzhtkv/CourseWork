@@ -7,6 +7,9 @@ import javafx.scene.control.Button;
 public class AdminWindow {
 
     @FXML
+    private Button backBttn;
+
+    @FXML
     private Button workWitchAdmins;
 
     @FXML
@@ -22,13 +25,23 @@ public class AdminWindow {
     private Button workWithBooks;
 
     @FXML
+    void enterBack(ActionEvent event) {
+        backBttn.setOnAction(actionEvent -> {
+            SceneChanger.changeScene("Вход",SceneName.STARTWINDOW,false);
+        });
+
+    }
+
+    @FXML
     void enterWorkWitchAdmins(ActionEvent event) {
 
     }
 
     @FXML
     void enterWorkWitchBooks(ActionEvent event) {
-
+        workWithBooks.setOnAction(actionEvent -> {
+            SceneChanger.changeScene("Вход",SceneName.BOOKMANAGEWINDOW,false);
+        });
     }
 
     @FXML

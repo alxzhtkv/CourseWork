@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: wheat;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegistrationWindow">
+   <children>
+      <Text layoutX="232.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Регистрация">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="62.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ваше ФИО:" />
+      <Text layoutX="62.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Дата вашего рождения:" />
+      <Text layoutX="65.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Контактный телефон:" />
+      <TextField fx:id="nameTextField" layoutX="223.0" layoutY="60.0" prefHeight="26.0" prefWidth="202.0" />
+      <TextField fx:id="birthdayField" layoutX="223.0" layoutY="97.0" prefHeight="26.0" prefWidth="202.0" />
+      <TextField fx:id="phoneField" layoutX="223.0" layoutY="136.0" prefHeight="26.0" prefWidth="202.0" />
+      <Text layoutX="65.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Серия и номер паспорта:" />
+      <TextField fx:id="passportIDField" layoutX="223.0" layoutY="179.0" prefHeight="26.0" prefWidth="202.0" />
+      <Text layoutX="65.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID(login):" />
+      <Text layoutX="65.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Ваш сгенерирован автоматически и является Вашин логином для входа)" />
+      <TextField fx:id="passField" layoutX="223.0" layoutY="284.0" prefHeight="26.0" prefWidth="202.0" />
+      <Text layoutX="65.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Придумайте Ваш пароль:" />
+      <Button fx:id="back" layoutX="263.0" layoutY="355.0" mnemonicParsing="false" onAction="#clickBack" text="Назад" />
+      <Button fx:id="signUp" layoutX="229.0" layoutY="323.0" mnemonicParsing="false" onAction="#clicksignUp" text="Зарегестироваться" />
+      <Label fx:id="loginIDL" layoutX="218.0" layoutY="221.0" prefHeight="18.0" prefWidth="79.0" />
+   </children>
+</AnchorPane>

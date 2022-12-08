@@ -14,6 +14,9 @@ public class StartWindow {
 
     @FXML
     void enterReg() {
+        registration.setOnAction(actionEvent -> {
+            SceneChanger.changeScene("Вход",SceneName.REGWINDOW,false);
+        });
 
     }
 

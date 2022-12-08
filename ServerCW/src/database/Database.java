@@ -238,11 +238,6 @@ public class Database {
                 System.out.println(book.getTitle());
                 booksTemp.add(book);
 
-//                String g=resultSet.getString(3);
-//                if(g.equals(user.getPassword()))
-//                    flag=true;
-//                System.out.println("ты милашка!");
-
             }
             System.out.println("Сработало, малышка!!!");
 
