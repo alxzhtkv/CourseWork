@@ -26,7 +26,7 @@ public class Main extends Application {
 
     public static void main(String[] arg)
          throws IOException {
-        Connect.client = new Client("127.0.0.2", "2525");
+        Connect.client = new Client("127.0.0.2", "9006");
         System.out.println("Connected");
         launch();
     }

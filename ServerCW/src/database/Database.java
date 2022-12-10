@@ -6,31 +6,58 @@ import java.sql.*;
 import java.util.Vector;
 
 public class Database {
+    private static volatile Database database=null;
     String userName = "root";
     String password = "1234";
 
     String DATABASE_URL = "jdbc:mysql://localhost:3306/library";
     String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     Statement statement = null;
+    Connection connection=null;
 
-    public Connection databaseConnection() throws SQLException {
-        Connection connection = null;
-        try {
+//    public Connection databaseConnection() throws SQLException {
+//        Connection connection = null;
+//        try {
+//            System.out.println("Registering JDBC driver...");
+//            Class.forName(JDBC_DRIVER);
+//
+//            System.out.println("Creating connection to database...");
+//            connection = DriverManager.getConnection(DATABASE_URL, userName, password);
+//
+//        } catch (Exception e) {
+//            System.out.println("Error " + e.getMessage());
+//            if (connection != null) {
+//                connection.close();
+//            }
+//        }
+//        return connection;
+//    }
+
+    private Database() throws SQLException {
+        try{
             System.out.println("Registering JDBC driver...");
             Class.forName(JDBC_DRIVER);
 
             System.out.println("Creating connection to database...");
-            connection = DriverManager.getConnection(DATABASE_URL, userName, password);
+            connection=DriverManager.getConnection(DATABASE_URL,userName,password);
 
-        } catch (Exception e) {
-            System.out.println("Error " + e.getMessage());
-            if (connection != null) {
+        }catch (Exception e){
+            System.out.println("Error "+e.getMessage());
+            if(connection!=null){
                 connection.close();
             }
         }
-        return connection;
     }
 
+    public static Database getInstance() throws SQLException {
+        if(database==null) {
+            synchronized (Database.class) {
+                if(database==null)
+                    database = new Database();
+            }
+        }
+        return database;
+    }
 
     public Statement addUserToTable(Connection conn,String log, String pass) throws SQLException{
         try {
@@ -50,20 +77,20 @@ public class Database {
     }
 
 
-    public Statement createTable(Connection conn) throws SQLException {
+    public Statement createTable() throws SQLException {
         try {
             String SQL ="CREATE TABLE IF NOT EXISTS LibraryUser"
                     +"(id INTEGER PRIMARY KEY AUTO_INCREMENT,"
                     +"login INTEGER NOT NULL UNIQUE,"
                     + "password VARCHAR (30) NOT NULL UNIQUE)";
-            statement = conn.createStatement();
+            statement = connection.createStatement();
             statement.executeUpdate(SQL);
 
             SQL ="CREATE TABLE IF NOT EXISTS LibraryAdmin"
                     +"(id INTEGER PRIMARY KEY AUTO_INCREMENT,"
                     +"login INTEGER NOT NULL UNIQUE,"
                     + "password VARCHAR (30) NOT NULL UNIQUE)";
-            statement = conn.createStatement();
+            statement = connection.createStatement();
             statement.executeUpdate(SQL);
 
             SQL ="CREATE TABLE IF NOT EXISTS LibraryReader"
@@ -81,7 +108,7 @@ public class Database {
                     + "FOREIGN KEY(id) REFERENCES LibraryUser(id))";
 
 
-            statement = conn.createStatement();
+            statement = connection.createStatement();
             statement.executeUpdate(SQL);
 
             SQL ="CREATE TABLE IF NOT EXISTS LibraryBooks"
@@ -98,7 +125,7 @@ public class Database {
                     + "countBooks INTEGER)";
 
 
-            statement = conn.createStatement();
+            statement = connection.createStatement();
             statement.executeUpdate(SQL);
 
 
@@ -114,22 +141,22 @@ public class Database {
         return statement;
     }
 
-    public void dropTable(Connection conn) throws SQLException {
+    public void dropTable() throws SQLException {
         try{
             String SQL="DROP TABLE LibraryUser";
-            statement= conn.createStatement();
+            statement= connection.createStatement();
             statement.executeUpdate(SQL);
         }catch (Exception e){
             System.out.println("Error "+e.getMessage());
         }
     }
 
-    public void insertUser(User user,Connection conn){
+    public void insertUser(User user){
         String SQL = "INSERT INTO LibraryUser(login,password) "
                 + "VALUES(?,?)";
 
         try {
-            PreparedStatement pstmt = conn.prepareStatement(SQL,
+            PreparedStatement pstmt = connection.prepareStatement(SQL,
                     Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, user.getLogin());
             pstmt.setString(2, user.getPassword());
@@ -140,12 +167,12 @@ public class Database {
 
     }
 
-    public void insertBook(Book book,Connection conn){
+    public void insertBook(Book book){
         String SQL = "INSERT INTO LibraryBooks(IDbook,title,author,publisher,genre,yearBook, countBooks) "
                 + "VALUES(?,?,?,?,?,?,?)";
 
         try {
-            PreparedStatement pstmt = conn.prepareStatement(SQL,
+            PreparedStatement pstmt = connection.prepareStatement(SQL,
                     Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, book.getID());
             pstmt.setString(2, book.getTitle());
@@ -163,12 +190,12 @@ public class Database {
 
     }
 
-    public void insertAdmin(User user,Connection conn){
+    public void insertAdmin(User user){
         String SQL = "INSERT INTO LibraryAdmin(login,password) "
                 + "VALUES(?,?)";
 
         try {
-            PreparedStatement pstmt = conn.prepareStatement(SQL,
+            PreparedStatement pstmt = connection.prepareStatement(SQL,
                     Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, user.getLogin());
             pstmt.setString(2, user.getPassword());
@@ -179,12 +206,12 @@ public class Database {
 
     }
 
-    public void insertReader(Reader reader,Connection conn){
+    public void insertReader(Reader reader){
         String SQL = "INSERT INTO LibraryReader(login,passportID,nameReader,surname,patronymic,phone,birthDay) "
                 + "VALUES(?,?,?,?,?,?,?)";
 
         try {
-            PreparedStatement pstmt = conn.prepareStatement(SQL,
+            PreparedStatement pstmt = connection.prepareStatement(SQL,
                     Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, reader.getLogin());
             pstmt.setString(2, reader.getPassportID());
@@ -200,7 +227,7 @@ public class Database {
 
     }
 
-    public Boolean authorizationCheck(User user,Connection conn){
+    public Boolean authorizationCheck(User user){
         boolean flag=false;
 
         try {
@@ -308,7 +335,7 @@ public class Database {
         return usersVectorTemp;
     }
 
-    public Boolean authorizationAdminCheck(User user,Connection conn){
+    public Boolean authorizationAdminCheck(User user){
         boolean flag=false;
 
         try {
