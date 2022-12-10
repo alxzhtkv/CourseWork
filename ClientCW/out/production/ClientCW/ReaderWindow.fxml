@@ -4,16 +4,26 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReaderWindow">
    <children>
-      <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: wheat;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
             <Tab text="Личный кабинет">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: wheat;">
                      <children>
-                        <Button fx:id="backBttn" layoutX="265.0" layoutY="307.0" mnemonicParsing="false" onAction="#clickB" prefHeight="26.0" prefWidth="70.0" text="Выйти" />
+                        <Button fx:id="show" layoutX="430.0" layoutY="87.0" mnemonicParsing="false" onAction="#clickShow" prefHeight="26.0" prefWidth="127.0" text="Показать" />
+                        <Button fx:id="backBttn" layoutX="265.0" layoutY="320.0" mnemonicParsing="false" onAction="#clickB" prefHeight="26.0" prefWidth="70.0" text="Выйти" />
+                        <Text layoutX="34.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ваши личные данные:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="edit" layoutX="430.0" layoutY="131.0" mnemonicParsing="false" onAction="#clickEdit" prefHeight="26.0" prefWidth="127.0" text="Редактировать" />
+                        <Button fx:id="hide" layoutX="430.0" layoutY="172.0" mnemonicParsing="false" onAction="#clickHide" prefHeight="26.0" prefWidth="127.0" text="Скрыть" />
                      </children>
                   </AnchorPane>
               </content>
@@ -29,6 +39,16 @@
               </content>
             </Tab>
             <Tab text="Заказ">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Запросы">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Рецензии">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>

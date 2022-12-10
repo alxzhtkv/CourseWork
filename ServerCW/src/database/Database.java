@@ -9,7 +9,7 @@ public class Database {
     String userName = "root";
     String password = "1234";
 
-    String DATABASE_URL = "jdbc:mysql://localhost:3306/mysql";
+    String DATABASE_URL = "jdbc:mysql://localhost:3306/library";
     String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     Statement statement = null;
 
