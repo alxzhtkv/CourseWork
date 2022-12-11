@@ -49,6 +49,8 @@ public class BookManagerWindow {
     @FXML
     void clickAdd(ActionEvent event) {
         add.setOnAction(actionEvent -> {
+            SceneChanger.changeScene("Вход",SceneName.ADDBOOKWINDOW,false);
+
 
         });
 
@@ -77,6 +79,11 @@ public class BookManagerWindow {
 
     @FXML
     void clickSearch(ActionEvent event) {
+        search.setOnAction(actionEvent -> {
+
+                SceneChanger.changeScene("Поиск",SceneName.SEARHBOOKMODAL,true);
+
+        });
 
     }
 
@@ -106,6 +113,7 @@ public class BookManagerWindow {
 
 
             }
+
             ObservableList<Book> bk= FXCollections.observableArrayList(booksVector);
             TableView<Book> table = new TableView<>(bk);
             table.setPrefWidth(570);
@@ -119,6 +127,27 @@ public class BookManagerWindow {
             TableColumn<Book,String> titleColumn = new TableColumn<>("Название");
             titleColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("title"));
             table.getColumns().add(titleColumn);
+
+            TableColumn<Book,String> authorColumn = new TableColumn<>("Автор");
+            authorColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("author"));
+            table.getColumns().add(authorColumn);
+
+            TableColumn<Book,String> publisherColumn = new TableColumn<>("Издательство");
+            publisherColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("publisher"));
+            table.getColumns().add(publisherColumn);
+
+            TableColumn<Book,String> genreColumn = new TableColumn<>("Жанр");
+            genreColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("genre"));
+            table.getColumns().add(genreColumn);
+
+            TableColumn<Book,String> yearColumn = new TableColumn<>("Год издания");
+            yearColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("year"));
+            table.getColumns().add(yearColumn);
+
+            TableColumn<Book,String> countColumn = new TableColumn<>("Количество");
+            countColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("count"));
+            table.getColumns().add(countColumn);
+
 
             AnchorPane.setLeftAnchor(table,0.0);
             AnchorPane.setBottomAnchor(table,0.0);

@@ -9,6 +9,9 @@ public class SceneName {
     public static String ADMINWINDOW ="/AdminWindow.fxml";
     public static String READERWINDOW="/readerWindow.fxml";
     public static String BOOKMANAGERWINDOW="/BookManagerWindow.fxml";
+
+    public static String ADDBOOKWINDOW ="/AddBookWindow.fxml";
+    public static String SEARHBOOKMODAL ="/SearchBookWindow.fxml";
 //    public static String READERWINDOW="/readerWindow.fxml";
 //    public static String ADMIN="/adminWindow.fxml";
 

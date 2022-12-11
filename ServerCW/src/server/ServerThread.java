@@ -84,6 +84,7 @@ public class ServerThread implements Runnable{
 
                     case "addingBook":{
                         book=getBook();
+//
                         database.insertBook(book);
                         System.out.println( book.getAuthor());
 
