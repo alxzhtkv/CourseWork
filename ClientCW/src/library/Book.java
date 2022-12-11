@@ -1,8 +1,12 @@
 package library;
 
-public class Book extends Publication{
+public class Book extends Publication {
     String author;
 
+
+    public Book() {
+        super();
+    }
 
     public Book(String ID, String title, String publisher, String genre, String year, String count, String author) {
         super(ID, title, publisher, genre, year, count);

@@ -27,21 +27,25 @@ public class AdminWindow {
     @FXML
     void enterBack(ActionEvent event) {
         backBttn.setOnAction(actionEvent -> {
-            SceneChanger.changeScene("Вход",SceneName.STARTWINDOW,false);
+            SceneChanger.changeScene("Вход",SceneName.BOOKMANAGERWINDOW,false);
         });
 
     }
 
     @FXML
     void enterWorkWitchAdmins(ActionEvent event) {
+        backBttn.setOnAction(actionEvent -> {
+            SceneChanger.changeScene("Вход",SceneName.BOOKMANAGERWINDOW,false);
+        });
 
     }
 
     @FXML
     void enterWorkWitchBooks(ActionEvent event) {
         workWithBooks.setOnAction(actionEvent -> {
-            SceneChanger.changeScene("Вход",SceneName.BOOKMANAGEWINDOW,false);
+            SceneChanger.changeScene("Вход",SceneName.BOOKMANAGERWINDOW,false);
         });
+
     }
 
     @FXML
@@ -55,7 +59,7 @@ public class AdminWindow {
     }
 
     @FXML
-    void enterworkWithBooksBttn(ActionEvent event) {
+    void enterworkWithBooks(ActionEvent event) {
 
     }
 

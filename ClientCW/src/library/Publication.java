@@ -1,6 +1,8 @@
 package library;
 
-public class Publication {
+import java.io.Serializable;
+
+public class Publication implements Serializable {
     String ID;
     String title;
     String publisher;
@@ -8,6 +10,7 @@ public class Publication {
     String year;
     String count;
 
+    public Publication(){}
 
     public Publication(String ID, String title, String publisher, String genre, String year, String count) {
         this.ID = ID;

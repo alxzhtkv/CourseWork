@@ -53,7 +53,8 @@ public class ServerThread implements Runnable{
                     }
                     case "authorization":
                     {
-                        user = getUser();
+//                        user = getUser();
+                        user = (User) sois.readObject();
                         answer = (String) sois.readObject();
                         System.out.println("хуй, но рабочего характера автризации");
 
@@ -94,10 +95,11 @@ public class ServerThread implements Runnable{
                         soos.writeObject(serverMessage);
 
                         while (i<size){
+//                            soos.writeObject(booksVector.get(i));
                             sendBook(booksVector.get(i));
                             i++;
                         }
-
+//
                         break;
                     }
                     case "deleteBook":{
