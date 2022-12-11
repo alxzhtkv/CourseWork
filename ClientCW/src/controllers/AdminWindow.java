@@ -13,7 +13,7 @@ public class AdminWindow {
     private Button workWitchAdmins;
 
     @FXML
-    private Button workWitchBooks;
+    private Button workWithReviews;
 
     @FXML
     private Button workWitchOrder;
@@ -23,33 +23,35 @@ public class AdminWindow {
 
     @FXML
     private Button workWithBooks;
+    @FXML
+    private Button workWithRequests;
 
+    @FXML
+    private Button WorkWithReviews;
+
+
+    @FXML
+    void enterWorkWithRequests(){}
     @FXML
     void enterBack(ActionEvent event) {
         backBttn.setOnAction(actionEvent -> {
-            SceneChanger.changeScene("Вход",SceneName.BOOKMANAGERWINDOW,false);
+            SceneChanger.changeScene("Вход",SceneName.ADMINWINDOW,false);
         });
 
     }
 
     @FXML
     void enterWorkWitchAdmins(ActionEvent event) {
-        backBttn.setOnAction(actionEvent -> {
-            SceneChanger.changeScene("Вход",SceneName.BOOKMANAGERWINDOW,false);
-        });
+//        backBttn.setOnAction(actionEvent -> {
+//            SceneChanger.changeScene("Вход",SceneName.BOOKMANAGERWINDOW,false);
+//        });
 
     }
 
-    @FXML
-    void enterWorkWitchBooks(ActionEvent event) {
-        workWithBooks.setOnAction(actionEvent -> {
-            SceneChanger.changeScene("Вход",SceneName.BOOKMANAGERWINDOW,false);
-        });
 
-    }
 
     @FXML
-    void enterWorkWitchUsers(ActionEvent event) {
+    void enterWorkWithReviews(ActionEvent event) {
 
     }
 
@@ -60,7 +62,13 @@ public class AdminWindow {
 
     @FXML
     void enterworkWithBooks(ActionEvent event) {
-
+        workWithBooks.setOnAction(actionEvent -> {
+            SceneChanger.changeScene("Вход",SceneName.BOOKMANAGERWINDOW,false);
+        });
     }
+
+    @FXML
+    void enterWorkWitchUsers(){}
+
 
 }

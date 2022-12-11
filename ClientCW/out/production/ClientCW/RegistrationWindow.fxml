@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -24,10 +25,16 @@
       <TextField fx:id="passportIDField" layoutX="223.0" layoutY="179.0" prefHeight="26.0" prefWidth="202.0" />
       <Text layoutX="65.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID(login):" />
       <Text layoutX="65.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Ваш сгенерирован автоматически и является Вашин логином для входа)" />
-      <TextField fx:id="passField" layoutX="223.0" layoutY="284.0" prefHeight="26.0" prefWidth="202.0" />
       <Text layoutX="65.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Придумайте Ваш пароль:" />
       <Button fx:id="back" layoutX="263.0" layoutY="355.0" mnemonicParsing="false" onAction="#clickBack" text="Назад" />
       <Button fx:id="signUp" layoutX="229.0" layoutY="323.0" mnemonicParsing="false" onAction="#clicksignUp" text="Зарегестироваться" />
       <Label fx:id="loginIDL" layoutX="218.0" layoutY="221.0" prefHeight="18.0" prefWidth="79.0" />
+      <PasswordField fx:id="passwordField" layoutX="223.0" layoutY="284.0" prefHeight="26.0" prefWidth="202.0" />
+      <Label layoutX="223.0" layoutY="222.0" prefHeight="26.0" prefWidth="120.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="IDgenerate" layoutX="451.0" layoutY="223.0" mnemonicParsing="false" onAction="#generate" text="Сгенерировать ID" />
    </children>
 </AnchorPane>

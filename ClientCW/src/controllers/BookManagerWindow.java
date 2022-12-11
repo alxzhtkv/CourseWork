@@ -23,8 +23,8 @@ public class BookManagerWindow {
 
     @FXML
     private Button add;
-    @FXML
-    private Tab BooksTab;
+
+
 
     @FXML
     private Button back;
@@ -48,21 +48,13 @@ public class BookManagerWindow {
 
     @FXML
     void clickAdd(ActionEvent event) {
+        add.setOnAction(actionEvent -> {
 
-    }
-
-    @FXML
-    void clickBooksTab(ActionEvent event) {
-        BooksTab.setOnSelectionChanged(new EventHandler<Event>() {
-            @Override
-            public void handle(Event event) {
-
-
-
-            }
         });
 
     }
+
+
 
 
     @FXML

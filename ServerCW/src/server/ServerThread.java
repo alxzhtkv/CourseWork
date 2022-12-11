@@ -25,6 +25,7 @@ public class ServerThread implements Runnable{
         try {
             Database database= Database.getInstance();
             User user;
+            Reader reader;
             Book book;
             String answer;
             String serverMessage;
@@ -42,9 +43,12 @@ public class ServerThread implements Runnable{
                     case "registration":
                     {
                         System.out.println("регистрация");
-                        user = getUser();
+//                        user = getUser();
+                        user = (User) sois.readObject();
                         database.insertUser(user);
-                        Reader reader = getReader();
+//                        Reader reader = getReader();
+                        reader = (Reader) sois.readObject();
+
                         System.out.println(reader.getName());
                         database.insertReader(reader);
 

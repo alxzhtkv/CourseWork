@@ -5,11 +5,12 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: wheat;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminWindow">
    <children>
-      <Button fx:id="workWithBooks" layoutX="204.0" layoutY="94.0" mnemonicParsing="false" onAction="#enterworkWithBooks" prefHeight="26.0" prefWidth="186.0" text="Работа с книгами" />
-      <Button fx:id="workWitchBooks" layoutX="204.0" layoutY="140.0" mnemonicParsing="false" onAction="#enterWorkWitchBooks" prefHeight="26.0" prefWidth="186.0" text="Работа с журналами" />
-      <Button fx:id="workWitchUsers" layoutX="204.0" layoutY="187.0" mnemonicParsing="false" onAction="#enterWorkWitchUsers" prefHeight="26.0" prefWidth="185.0" text="Управление пользователями" />
-      <Button fx:id="workWitchOrder" layoutX="203.0" layoutY="234.0" mnemonicParsing="false" onAction="#enterworkWitchOrder" prefHeight="26.0" prefWidth="186.0" text="Управление заказами" />
-      <Button fx:id="workWitchAdmins" layoutX="204.0" layoutY="278.0" mnemonicParsing="false" onAction="#enterWorkWitchAdmins" prefHeight="26.0" prefWidth="186.0" text="Добавление администратора" />
-      <Button fx:id="backBttn" layoutX="203.0" layoutY="324.0" mnemonicParsing="false" onAction="#enterBack" prefHeight="26.0" prefWidth="186.0" text="Выйти" />
+      <Button fx:id="workWithBooks" layoutX="207.0" layoutY="42.0" mnemonicParsing="false" onAction="#enterworkWithBooks" prefHeight="26.0" prefWidth="186.0" text="Работа с книгами" />
+      <Button fx:id="workWithReviews" layoutX="210.0" layoutY="275.0" mnemonicParsing="false" onAction="#enterWorkWithReviews" prefHeight="26.0" prefWidth="186.0" text="Отзывы" />
+      <Button fx:id="workWitchUsers" layoutX="207.0" layoutY="88.0" mnemonicParsing="false" onAction="#enterWorkWitchUsers" prefHeight="26.0" prefWidth="185.0" text="Управление пользователями" />
+      <Button fx:id="workWitchOrder" layoutX="206.0" layoutY="135.0" mnemonicParsing="false" onAction="#enterworkWitchOrder" prefHeight="26.0" prefWidth="186.0" text="Управление заказами" />
+      <Button fx:id="workWitchAdmins" layoutX="207.0" layoutY="179.0" mnemonicParsing="false" onAction="#enterWorkWitchAdmins" prefHeight="26.0" prefWidth="186.0" text="Добавление администратора" />
+      <Button fx:id="backBttn" layoutX="207.0" layoutY="320.0" mnemonicParsing="false" onAction="#enterBack" prefHeight="26.0" prefWidth="186.0" text="Выйти" />
+      <Button fx:id="workWithRequests" layoutX="206.0" layoutY="227.0" mnemonicParsing="false" onAction="#enterWorkWithRequests" prefHeight="26.0" prefWidth="186.0" text="Запросы" />
    </children>
 </AnchorPane>

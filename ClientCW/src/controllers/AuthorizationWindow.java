@@ -83,6 +83,9 @@ public class AuthorizationWindow {
 
     @FXML
     void enterback(ActionEvent event) {
+        backBttn.setOnAction(actionEvent -> {
+            SceneChanger.changeScene("Библиотека", SceneName.STARTWINDOW, false);
+        });
 
     }
 
