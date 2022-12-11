@@ -1,4 +1,13 @@
 package controllers;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import library.*;
 
 import client.Client;
@@ -14,6 +23,8 @@ public class BookManagerWindow {
 
     @FXML
     private Button add;
+    @FXML
+    private Tab BooksTab;
 
     @FXML
     private Button back;
@@ -29,6 +40,8 @@ public class BookManagerWindow {
 
     @FXML
     private Button showBooks;
+    @FXML
+    private AnchorPane viewTableBooks;
 
     @FXML
     private Button sort;
@@ -37,6 +50,20 @@ public class BookManagerWindow {
     void clickAdd(ActionEvent event) {
 
     }
+
+    @FXML
+    void clickBooksTab(ActionEvent event) {
+        BooksTab.setOnSelectionChanged(new EventHandler<Event>() {
+            @Override
+            public void handle(Event event) {
+
+
+
+            }
+        });
+
+    }
+
 
     @FXML
     void clickBack(ActionEvent event) {
@@ -84,10 +111,30 @@ public class BookManagerWindow {
                 Book book = getBookFromDatabase();
                 booksVector.add(book);
 //                book = (Book) Connect.client.readObject();
-                booksVector.add(book);
 
 
             }
+            ObservableList<Book> bk= FXCollections.observableArrayList(booksVector);
+            TableView<Book> table = new TableView<>(bk);
+            table.setPrefWidth(570);
+            table.setPrefHeight(300);
+            table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+            TableColumn<Book,String> idColumn = new TableColumn<>("ID");
+            idColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("ID"));
+            table.getColumns().add(idColumn);
+
+            TableColumn<Book,String> titleColumn = new TableColumn<>("Название");
+            titleColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("title"));
+            table.getColumns().add(titleColumn);
+
+            AnchorPane.setLeftAnchor(table,0.0);
+            AnchorPane.setBottomAnchor(table,0.0);
+            AnchorPane.setRightAnchor(table,0.0);
+            AnchorPane.setTopAnchor(table,0.0);
+            viewTableBooks.getChildren().add(table);
+
+
 
 
 

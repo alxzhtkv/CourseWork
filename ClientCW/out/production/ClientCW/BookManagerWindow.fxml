@@ -9,12 +9,12 @@
    <children>
       <TabPane prefHeight="400.0" prefWidth="601.0" style="-fx-background-color: wheat;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <Tab text="Фонд книг">
+            <Tab fx:id="BooksTab" onSelectionChanged="#clickBooksTab" text="Фонд книг">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="showBooks" layoutX="249.0" layoutY="14.0" mnemonicParsing="false" onAction="#clickShowBooks" text="Обновить" />
-                        <AnchorPane layoutX="14.0" layoutY="50.0" prefHeight="300.0" prefWidth="574.0" />
+                        <AnchorPane fx:id="viewTableBooks" layoutX="14.0" layoutY="50.0" prefHeight="300.0" prefWidth="570.0" />
                      </children></AnchorPane>
               </content>
             </Tab>
