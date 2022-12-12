@@ -11,7 +11,8 @@ public class SceneName {
     public static String BOOKMANAGERWINDOW="/BookManagerWindow.fxml";
 
     public static String ADDBOOKWINDOW ="/AddBookWindow.fxml";
-    public static String SEARHBOOKMODAL ="/SearchBookWindow.fxml";
+    public static String SEARHBOOKWINDOW ="/SearchBookWindow.fxml";
+    public static String SEARHBOOKMODAL ="/SearchBookModal.fxml";
 //    public static String READERWINDOW="/readerWindow.fxml";
 //    public static String ADMIN="/adminWindow.fxml";
 

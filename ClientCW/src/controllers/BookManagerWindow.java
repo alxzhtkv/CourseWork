@@ -81,7 +81,7 @@ public class BookManagerWindow {
     void clickSearch(ActionEvent event) {
         search.setOnAction(actionEvent -> {
 
-                SceneChanger.changeScene("Поиск",SceneName.SEARHBOOKMODAL,true);
+                SceneChanger.changeScene("Поиск",SceneName.SEARHBOOKWINDOW,false);
 
         });
 
