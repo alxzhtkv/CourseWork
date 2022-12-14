@@ -1,4 +1,4 @@
-package publications;
+package library;
 
 import java.io.Serializable;
 

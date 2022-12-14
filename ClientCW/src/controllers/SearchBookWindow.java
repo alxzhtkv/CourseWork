@@ -33,13 +33,13 @@ public class SearchBookWindow {
     @FXML
     private AnchorPane viewTableBooks;
 
-    @FXML
-    void clickBack(ActionEvent event) {
-        back.setOnAction(actionEvent -> {
-            SceneChanger.changeScene("Работа с книгами", SceneName.BOOKMANAGERWINDOW, false);
-        });
-
-    }
+//    @FXML
+//    void clickBack(ActionEvent event) {
+//        back.setOnAction(actionEvent -> {
+//            SceneChanger.changeScene("Работа с книгами", SceneName.BOOKMANAGERWINDOW, false);
+//        });
+//
+//    }
 
     @FXML
     void search(ActionEvent event) {

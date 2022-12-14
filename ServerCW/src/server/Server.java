@@ -1,17 +1,8 @@
 package server;
-import database.*;
-import publications.*;
-import persons.*;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Vector;
 
 public class Server implements Runnable {
     protected int serverPort = 9006;

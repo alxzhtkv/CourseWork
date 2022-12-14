@@ -86,7 +86,7 @@ public class BookManagerWindow {
     void clickSearch(ActionEvent event) {
         search.setOnAction(actionEvent -> {
 
-                SceneChanger.changeScene("Поиск",SceneName.SEARHBOOKWINDOW,false);
+                SceneChanger.changeScene("Поиск",SceneName.SEARHBOOKWINDOW,true);
 
         });
 
@@ -173,7 +173,7 @@ public class BookManagerWindow {
 
     }
 
-    public Book getBookFromDatabase(){
+   static public Book getBookFromDatabase(){
         String id,title,publisher,genre,year,count,author;
 
             id = (String) Connect.client.readObject();

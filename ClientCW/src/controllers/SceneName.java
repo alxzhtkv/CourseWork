@@ -16,6 +16,10 @@ public class SceneName {
     public static String DELETEBOOKMODAL ="/DeleteBookModal.fxml";
     public static String DELETEOKBOOK ="/DeleteOkBook.fxml";
     public static String DELETEERRORBOOK ="/DeleteErrorBook.fxml";
+
+    public static String ADDFAVOURITESMODAL ="/AddFavouritesModal.fxml";
+
+
 //    public static String READERWINDOW="/readerWindow.fxml";
 //    public static String ADMIN="/adminWindow.fxml";
 

@@ -55,7 +55,7 @@ public class AuthorizationWindow {
 
             switch (answer) {
                 case "approved": {
-
+                    Connect.id=login;
                     SceneChanger.changeScene("Вход", SceneName.READERWINDOW, false);
                     break;
                 }

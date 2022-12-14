@@ -18,29 +18,31 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: wheat;">
                      <children>
                         <Button fx:id="show" layoutX="430.0" layoutY="87.0" mnemonicParsing="false" onAction="#clickShow" prefHeight="26.0" prefWidth="127.0" text="Показать" />
-                        <Button fx:id="backBttn" layoutX="265.0" layoutY="320.0" mnemonicParsing="false" onAction="#clickB" prefHeight="26.0" prefWidth="70.0" text="Выйти" />
-                        <Text layoutX="32.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ваши личные данные:">
+                        <Button fx:id="backBttn" layoutX="252.0" layoutY="330.0" mnemonicParsing="false" onAction="#clickB" prefHeight="26.0" prefWidth="70.0" text="Выйти" />
+                        <Text layoutX="21.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ваши личные данные:">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
                         <Button fx:id="edit" layoutX="430.0" layoutY="131.0" mnemonicParsing="false" onAction="#clickEdit" prefHeight="26.0" prefWidth="127.0" text="Редактировать" />
                         <Button fx:id="hide" layoutX="430.0" layoutY="172.0" mnemonicParsing="false" onAction="#clickHide" prefHeight="26.0" prefWidth="127.0" text="Скрыть" />
-                        <Text layoutX="34.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID(login):" />
-                        <Text layoutX="34.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Номер паспорта:" />
-                        <Text layoutX="33.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Фамилия:" />
-                        <Text layoutX="35.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Имя:" />
-                        <Text layoutX="32.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Отчество:" />
-                        <Text layoutX="33.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Номер телефона:" />
-                        <Text layoutX="32.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Дата рождения:" />
-                        <TextField fx:id="nameField" layoutX="167.0" layoutY="159.0" />
-                        <TextField fx:id="phoneField" layoutX="167.0" layoutY="232.0" />
-                        <TextField fx:id="birthdayField" layoutX="167.0" layoutY="270.0" />
-                        <TextField fx:id="patronymicField" layoutX="167.0" layoutY="194.0" />
-                        <TextField fx:id="surnameField" layoutX="167.0" layoutY="123.0" />
-                        <TextField fx:id="passsportField" layoutX="167.0" layoutY="87.0" />
-                        <Label fx:id="idL" layoutX="170.0" layoutY="59.0" />
-                        <Label fx:id="idLabel" layoutX="167.0" layoutY="51.0" text="    " />
+                        <Text layoutX="34.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID(login):" />
+                        <Text layoutX="34.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Номер паспорта:" />
+                        <Text layoutX="33.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Фамилия:" />
+                        <Text layoutX="35.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Имя:" />
+                        <Text layoutX="32.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Отчество:" />
+                        <Text layoutX="33.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Номер телефона:" />
+                        <Text layoutX="32.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Дата рождения:" />
+                        <TextField fx:id="nameField" layoutX="167.0" layoutY="143.0" />
+                        <TextField fx:id="phoneField" layoutX="167.0" layoutY="216.0" />
+                        <TextField fx:id="birthdayField" layoutX="167.0" layoutY="254.0" />
+                        <TextField fx:id="patronymicField" layoutX="167.0" layoutY="178.0" />
+                        <TextField fx:id="surnameField" layoutX="167.0" layoutY="107.0" />
+                        <TextField fx:id="passsportField" layoutX="167.0" layoutY="71.0" />
+                        <Label fx:id="idL" layoutX="170.0" layoutY="43.0" />
+                        <Label fx:id="idLabel" layoutX="167.0" layoutY="35.0" text="    " />
+                        <Text layoutX="36.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Пароль:" />
+                        <TextField fx:id="passwordField" layoutX="167.0" layoutY="290.0" />
                      </children>
                   </AnchorPane>
               </content>
@@ -49,14 +51,21 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="showBooks" layoutX="177.0" layoutY="14.0" mnemonicParsing="false" onAction="#clickShow" text="Показать всё" />
-                        <Button fx:id="search" layoutX="275.0" layoutY="14.0" mnemonicParsing="false" onAction="#clickSearch" text="Найти" />
+                        <Button fx:id="showBooks" layoutX="195.0" layoutY="14.0" mnemonicParsing="false" onAction="#clickShowBooks" text="Показать всё" />
+                        <Button fx:id="search" layoutX="300.0" layoutY="14.0" mnemonicParsing="false" onAction="#clickSearch" text="Найти" />
+                        <AnchorPane fx:id="tableBooks" layoutX="13.0" layoutY="61.0" prefHeight="282.0" prefWidth="574.0" />
                      </children></AnchorPane>
               </content>
             </Tab>
             <Tab text="Избранное">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="showFavourites" layoutX="24.0" layoutY="25.0" mnemonicParsing="false" onAction="#clickShowfavourites" text="Показать избранное" />
+                        <Button fx:id="addFavourites" layoutX="180.0" layoutY="25.0" mnemonicParsing="false" onAction="#clickAddFavourites" text="Добавить" />
+                        <Button fx:id="deleteFavourites" layoutX="274.0" layoutY="25.0" mnemonicParsing="false" onAction="#clickDeleteFavourites" text="Удалить" />
+                        <AnchorPane fx:id="favouritesTable" layoutX="17.0" layoutY="61.0" prefHeight="295.0" prefWidth="568.0" />
+                     </children></AnchorPane>
               </content>
             </Tab>
             <Tab text="Заказ">

@@ -1,6 +1,6 @@
 package database;
 import persons.*;
-import publications.*;
+import library.*;
 
 import java.sql.*;
 import java.util.Vector;
@@ -114,17 +114,45 @@ public class Database {
             SQL ="CREATE TABLE IF NOT EXISTS LibraryBooks"
 //                    + "(id INTEGER PRIMARY KEY AUTO_INCREMENT,"
 ////                    + "login INTEGER,"
-                    + "(id INTEGER PRIMARY KEY AUTO_INCREMENT,"
-                    + "IDbook INTEGER,"
+//                    + "(id INTEGER AUTO_INCREMENT,"
+                    + "(IDbook INTEGER PRIMARY KEY,"
                     + "title VARCHAR (30),"
                     + "author VARCHAR (30),"
                     + "publisher VARCHAR (30),"
                     + "genre VARCHAR (30),"
 //                    + "passwordID VARCHAR (30),"
                     + "yearBook INTEGER,"
-                    + "countBooks INTEGER)";
+                    + "status VARCHAR (30))";
 
 
+            statement = connection.createStatement();
+            statement.executeUpdate(SQL);
+
+
+            SQL ="CREATE TABLE IF NOT EXISTS LibraryFavourites"
+                    +"(id INTEGER PRIMARY KEY AUTO_INCREMENT,"
+                    +"readerID INTEGER,"
+                    + "bookID INTEGER NOT NULL UNIQUE,"
+                    + "FOREIGN KEY (bookID) REFERENCES LibraryBooks (IDbook))";
+            statement = connection.createStatement();
+            statement.executeUpdate(SQL);
+
+            SQL ="CREATE TABLE IF NOT EXISTS LibraryOrders"
+                    +"(id INTEGER PRIMARY KEY AUTO_INCREMENT,"
+                    +"readerID INTEGER,"
+                    + "bookID INTEGER NOT NULL UNIQUE,"
+                    + "orderID INTEGER NOT NULL UNIQUE,"
+                    + "FOREIGN KEY (bookID) REFERENCES LibraryBooks (IDbook))";
+            statement = connection.createStatement();
+            statement.executeUpdate(SQL);
+
+            SQL ="CREATE TABLE IF NOT EXISTS LibraryReview"
+                    +"(id INTEGER PRIMARY KEY AUTO_INCREMENT,"
+                    +"readerID INTEGER,"
+                    + "bookID INTEGER NOT NULL UNIQUE,"
+                    + "booktitle VARCHAR (30),"
+                    + "review TEXT,"
+                    + "FOREIGN KEY (bookID) REFERENCES LibraryBooks (IDbook))";
             statement = connection.createStatement();
             statement.executeUpdate(SQL);
 
@@ -254,13 +282,13 @@ public class Database {
             ResultSet resultSet=statement.executeQuery("SELECT * FROM `LibraryBooks`" );
 //            +"AND (password ="+ user.getPassword().toString() + ")"
             while (resultSet.next()){
-                String ID=resultSet.getString(2);
-                String title=resultSet.getString(3);
-                String author = resultSet.getString(4);
-                String publisher=resultSet.getString(5);
-                String genre=resultSet.getString(6);
-                String year=resultSet.getString(7);
-                String count =resultSet.getString(8);
+                String ID=resultSet.getString(1);
+                String title=resultSet.getString(2);
+                String author = resultSet.getString(3);
+                String publisher=resultSet.getString(4);
+                String genre=resultSet.getString(5);
+                String year=resultSet.getString(6);
+                String count =resultSet.getString(7);
                 Book book = new Book(ID,title,publisher,genre,year,count,author);
                 System.out.println(book.getTitle());
                 booksTemp.add(book);
@@ -308,6 +336,46 @@ public class Database {
 
         return readersTemp;
     }
+
+
+    public Reader getReaderByID(String id){
+       Reader reader=null;
+        String password = "1";
+        try {
+            ResultSet resultSet=statement.executeQuery("SELECT * FROM `LibraryReader`  WHERE (login ="+id+")" );
+//            +"AND (password ="+ user.getPassword().toString() + ")"
+            while (resultSet.next()){
+                String login=resultSet.getString(2);
+                String passportID=resultSet.getString(3);
+                String nameReader = resultSet.getString(4);
+                String surname=resultSet.getString(5);
+                String patronymic=resultSet.getString(6);
+                String phone=resultSet.getString(7);
+                String birthday =resultSet.getString(8);
+                 reader = new Reader(login,password,nameReader,surname,patronymic,passportID,phone, birthday);
+
+            }
+            System.out.println("Сработало, малышка!!!");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            ResultSet resultSet=statement.executeQuery("SELECT * FROM `LibraryUser`  WHERE (login ="+id+")" );
+            while (resultSet.next()){
+                password=resultSet.getString(3);
+               reader.setPassword(password);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return reader;
+    }
+
+
 
     public Vector<User> getUsersFromDatabase(){
         Vector<User> usersVectorTemp=new Vector<User>();
@@ -424,6 +492,10 @@ public class Database {
         }
 
         return booksTemp;
+    }
+
+    public void insertFavourites(Favourites favourites){
+
     }
 
 //    public void authorsSort(){

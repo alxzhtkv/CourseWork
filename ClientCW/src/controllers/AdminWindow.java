@@ -35,7 +35,7 @@ public class AdminWindow {
     @FXML
     void enterBack(ActionEvent event) {
         backBttn.setOnAction(actionEvent -> {
-            SceneChanger.changeScene("Вход",SceneName.ADMINWINDOW,false);
+            SceneChanger.changeScene("Вход",SceneName.SIGNINWINDOW,false);
         });
 
     }

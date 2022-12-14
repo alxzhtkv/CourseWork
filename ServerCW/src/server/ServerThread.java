@@ -1,7 +1,7 @@
 package server;
 import database.*;
 import persons.*;
-import publications.*;
+import library.*;
 
 
 import java.io.IOException;
@@ -26,9 +26,10 @@ public class ServerThread implements Runnable{
             Database database= Database.getInstance();
             User user;
             Reader reader;
-            Book book;
+            Book book = null;
+            Favourites favourites=null;
             String answer;
-            String serverMessage;
+            String serverMessage = null;
 //            Passenger passenger=new Passenger();
 //            Person person=new Person();
 //            Admin admin=new Admin();
@@ -74,11 +75,28 @@ public class ServerThread implements Runnable{
                         else {
                             if(database.authorizationCheck(user)){
                                 serverMessage="approved";
+//                                reader=database.getReaderByID(user);
+//                                System.out.println(reader.getName());
                             }else serverMessage="refused";
                             soos.writeObject(serverMessage);
+
+//                            soos.writeObject(reader);
+//
                         }
 
 
+                        break;
+                    }
+
+                    case "getReader":
+                    {
+                        answer = (String) sois.readObject();
+                        reader=database.getReaderByID(answer);
+//                        user=database.getUserByID(answer);
+                      System.out.println(reader.getName());
+
+                        soos.writeObject(reader);
+//                        soos.writeObject(user);
                         break;
                     }
 
@@ -176,6 +194,25 @@ public class ServerThread implements Runnable{
                     case "addAdmin":{
                         user = getUser();
                         database.insertAdmin(user);
+
+                        break;
+
+
+                    }
+
+                    case "addFavourites":{
+                        boolean flag=false;
+                        Vector<Book> booksVector= database.getBooksFromDatabase();
+                        favourites = (Favourites) sois.readObject();
+
+                        
+                        for (int i=0;i<booksVector.size();i++)
+                            if(favourites.getBookID().equals( booksVector.get(i).getID())){
+                                database.insertFavourites(favourites);
+                                serverMessage = "added";
+                            }else serverMessage = "error";
+                        soos.writeObject(serverMessage);
+                               
 
                         break;
 
