@@ -108,9 +108,11 @@ public class ServerThread implements Runnable{
                         break;
                     }
                     case "deleteBook":{
+                        System.out.println("зашло удаление");
                         answer = (String) sois.readObject();
                         boolean flag=database.deleteBookByID(answer);
                         System.out.println(flag);
+
                         if(flag){
                             serverMessage="deleted";
                         }else serverMessage="error";

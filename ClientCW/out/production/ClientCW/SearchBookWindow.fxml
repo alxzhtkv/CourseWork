@@ -17,6 +17,6 @@
       <Text layoutX="191.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите параметр для поиска:" />
       <TextField fx:id="searchField" layoutX="200.0" layoutY="66.0" />
       <AnchorPane fx:id="viewTableBooks" layoutX="11.0" layoutY="102.0" prefHeight="234.0" prefWidth="574.0" />
-      <Button fx:id="back" layoutX="273.0" layoutY="348.0" mnemonicParsing="false" onAction="#clickBack" text="Button" />
+      <Button fx:id="back" layoutX="273.0" layoutY="348.0" mnemonicParsing="false" onAction="#clickBack" text="Назад" />
    </children>
 </AnchorPane>
