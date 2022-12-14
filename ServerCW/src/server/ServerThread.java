@@ -204,19 +204,47 @@ public class ServerThread implements Runnable{
                         boolean flag=false;
                         Vector<Book> booksVector= database.getBooksFromDatabase();
                         favourites = (Favourites) sois.readObject();
-
+                        serverMessage = "error";
                         
-                        for (int i=0;i<booksVector.size();i++)
-                            if(favourites.getBookID().equals( booksVector.get(i).getID())){
+                        for (int i=0;i<booksVector.size();i++){
+                            if(favourites.getBookID().equals(booksVector.get(i).getID())){
+                                System.out.println(booksVector.get(i).getID());
                                 database.insertFavourites(favourites);
                                 serverMessage = "added";
-                            }else serverMessage = "error";
+                            }
+
+                        }
                         soos.writeObject(serverMessage);
-                               
-
                         break;
+                    }
+                    case "showFavourites":{
+                        String readerID = (String) sois.readObject();
+                        Vector<Book> favouritesBooksVector=new Vector<>();
 
+                        Vector<Book> booksVector= database.getBooksFromDatabase();
+                        Vector<String> idFavouritesBooks = database.getIdFavouritesBooks(readerID);
+//
 
+                        for (int i=0;i<booksVector.size();i++){
+                            for(int j=0;j<idFavouritesBooks.size();j++){
+//                                booksVector.get(i).getID().equals()
+                                if( booksVector.get(i).getID().equals(idFavouritesBooks.get(j))){
+                                    favouritesBooksVector.add(booksVector.get(i));
+                                }
+                            }
+
+                        }
+                        serverMessage=Integer.toString(favouritesBooksVector.size());
+
+                        soos.writeObject(serverMessage);
+                        int i=0;
+                        while (i<favouritesBooksVector.size()){
+//                            soos.writeObject(booksVector.get(i));
+                            sendBook(favouritesBooksVector.get(i));
+                            i++;
+                        }
+//                        soos.writeObject(serverMessage);
+                        break;
                     }
 
                 }

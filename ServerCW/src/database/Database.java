@@ -255,6 +255,22 @@ public class Database {
 
     }
 
+
+    public void insertFavourites(Favourites favourites){
+        String SQL = "INSERT INTO LibraryFavourites(readerID,bookID) "
+                + "VALUES(?,?)";
+
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(SQL,
+                    Statement.RETURN_GENERATED_KEYS);
+            pstmt.setString(1, favourites.getReaderID());
+            pstmt.setString(2, favourites.getBookID());
+            int affectedRows = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public Boolean authorizationCheck(User user){
         boolean flag=false;
 
@@ -301,6 +317,25 @@ public class Database {
         }
 
         return booksTemp;
+    }
+
+
+    public Vector<String> getIdFavouritesBooks(String readerID){
+        Vector<String> idFavouritesBooks = new Vector<String>();
+        try {
+            ResultSet resultSet=statement.executeQuery("SELECT * FROM `LibraryFavourites` WHERE (readerID ="+readerID+")" );
+//            +"AND (password ="+ user.getPassword().toString() + ")"
+            while (resultSet.next()){
+                String IDbook=resultSet.getString(3);
+                idFavouritesBooks.add(IDbook);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return idFavouritesBooks;
     }
 
     public Vector<Reader> getReadersFromDatabase(){
@@ -494,9 +529,7 @@ public class Database {
         return booksTemp;
     }
 
-    public void insertFavourites(Favourites favourites){
 
-    }
 
 //    public void authorsSort(){
 //        String SQL="ALTER TABLE LibraryBooks ORDER BY title";

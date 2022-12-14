@@ -236,6 +236,73 @@ public class ReaderWindow {
     }
     @FXML
     void clickShowfavourites(ActionEvent event) {
+        showFavourites.setOnAction(actionEvent -> {
+            Connect.client.sendMessage("showFavourites");
+            Connect.client.sendMessage(Connect.id);
+            String size = null;
+            try {
+                size = Connect.client.readMessage();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println("оличество избранного "+size);
+            int n = Integer.parseInt (size);
+            int count = n;
+            int j = 0;
+
+            Vector<Book> booksVector = new Vector<>();
+
+            for(int i=0;i<count;i++){
+//                Book book = new Book();
+                Book book = getBookFromDatabase();
+                booksVector.add(book);
+//                book = (Book) Connect.client.readObject();
+
+
+            }
+
+            ObservableList<Book> bk= FXCollections.observableArrayList(booksVector);
+            TableView<Book> table = new TableView<>(bk);
+            table.setPrefWidth(570);
+            table.setPrefHeight(300);
+            table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+            TableColumn<Book,String> idColumn = new TableColumn<>("ID");
+            idColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("ID"));
+            table.getColumns().add(idColumn);
+
+            TableColumn<Book,String> titleColumn = new TableColumn<>("Название");
+            titleColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("title"));
+            table.getColumns().add(titleColumn);
+
+            TableColumn<Book,String> authorColumn = new TableColumn<>("Автор");
+            authorColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("author"));
+            table.getColumns().add(authorColumn);
+
+            TableColumn<Book,String> publisherColumn = new TableColumn<>("Издательство");
+            publisherColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("publisher"));
+            table.getColumns().add(publisherColumn);
+
+            TableColumn<Book,String> genreColumn = new TableColumn<>("Жанр");
+            genreColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("genre"));
+            table.getColumns().add(genreColumn);
+
+            TableColumn<Book,String> yearColumn = new TableColumn<>("Год издания");
+            yearColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("year"));
+            table.getColumns().add(yearColumn);
+
+            TableColumn<Book,String> countColumn = new TableColumn<>("Количество");
+            countColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("count"));
+            table.getColumns().add(countColumn);
+
+
+            AnchorPane.setLeftAnchor(table,0.0);
+            AnchorPane.setBottomAnchor(table,0.0);
+            AnchorPane.setRightAnchor(table,0.0);
+            AnchorPane.setTopAnchor(table,0.0);
+            favouritesTable.getChildren().add(table);
+        });
+
 
     }
 }
