@@ -80,7 +80,12 @@
             </Tab>
             <Tab text="Рецензии">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="showReview" layoutX="25.0" layoutY="20.0" mnemonicParsing="false" onAction="#clickShowReview" text="Показать все рецензии" />
+                        <Button fx:id="addReview" layoutX="185.0" layoutY="19.0" mnemonicParsing="false" onAction="#clickAddReview" prefHeight="26.0" prefWidth="144.0" text="Написать рецензию" />
+                        <AnchorPane fx:id="TableReview" layoutX="14.0" layoutY="62.0" prefHeight="293.0" prefWidth="571.0" />
+                     </children></AnchorPane>
               </content>
             </Tab>
         </tabs>

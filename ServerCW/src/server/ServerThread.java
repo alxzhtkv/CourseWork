@@ -247,6 +247,43 @@ public class ServerThread implements Runnable{
                         break;
                     }
 
+                    case "checkTitle":{
+                        String id = (String) sois.readObject();
+                        String title =database.getTitleBookByID(id);
+                        soos.writeObject(title);
+
+
+                        break;
+                    }
+
+                    case "addReview":{
+                        answer = (String) sois.readObject();
+                        if(answer.equals("ok")){
+                            Review review = (Review) sois.readObject();
+                            database.insertReview(review);
+                        }
+
+                        break;
+                    }
+
+                    case "showReviews":{
+
+                        Vector<Review> reviewsVector= database.getReviews();
+                        int size=reviewsVector.size();
+                        System.out.println(size);
+                        int i=0;
+                        serverMessage=Integer.toString(size);
+                        soos.writeObject(serverMessage);
+
+                        while (i<size){
+                            soos.writeObject(reviewsVector.get(i));
+//                            sendBook(booksVector.get(i));
+                            i++;
+                        }
+//
+                        break;
+                    }
+
                 }
 
 

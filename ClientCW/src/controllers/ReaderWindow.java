@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import library.Book;
+import library.Review;
 import persons.*;
 
 import client.Connect;
@@ -19,6 +20,13 @@ import java.util.Vector;
 import static controllers.BookManagerWindow.getBookFromDatabase;
 
 public class ReaderWindow {
+
+    @FXML
+    private AnchorPane TableReview;
+    @FXML
+    private Button addReview;
+    @FXML
+    private Button showReview;
 
     @FXML
     private Button addFavourites;
@@ -303,6 +311,42 @@ public class ReaderWindow {
             favouritesTable.getChildren().add(table);
         });
 
+
+    }
+
+    @FXML
+    void clickAddReview(ActionEvent event) {
+
+        addReview.setOnAction(actionEvent -> {
+            SceneChanger.changeScene("Рецензии",SceneName.ADDREVIEWWINDOW,false);
+        });
+    }
+    @FXML
+    void clickShowReview(ActionEvent event) {
+
+        showReview.setOnAction(actionEvent -> {
+            Connect.client.sendMessage("showReviews");
+            String size = null;
+            try {
+                size = Connect.client.readMessage();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println(size);
+            int n = Integer.parseInt (size);
+            int count = n;
+            int j = 0;
+
+            Vector<Review> reviewVector = new Vector<Review>();
+
+            for(int i=0;i<count;i++){
+                Review review = (Review)Connect.client.readObject();
+                reviewVector.add(review);
+            }
+
+            
+
+        });
 
     }
 }

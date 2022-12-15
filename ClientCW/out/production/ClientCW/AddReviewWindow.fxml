@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: wheat;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddReviewWindow">
+   <children>
+      <TextArea fx:id="textArea" layoutX="41.0" layoutY="141.0" prefHeight="200.0" prefWidth="514.0">
+         <font>
+            <Font name="Calibri Italic" size="12.0" />
+         </font>
+      </TextArea>
+      <TextField fx:id="idBook" layoutX="43.0" layoutY="72.0" />
+      <Text layoutX="193.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Составление резенции">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <Text layoutX="43.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите ID книги, на которую хотите оставить рецензию:" />
+      <Text layoutX="42.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Поделитесь своим мнением по поводу книги :" />
+      <Label fx:id="titleL" layoutX="308.0" layoutY="108.0" prefHeight="18.0" prefWidth="278.0" text="    " />
+      <Button fx:id="ok" layoutX="201.0" layoutY="72.0" mnemonicParsing="false" onAction="#getBookTitle" text="Ок" />
+      <Button fx:id="send" layoutX="41.0" layoutY="352.0" mnemonicParsing="false" onAction="#clickSend" text="Отправить" />
+      <Button fx:id="back" layoutX="136.0" layoutY="352.0" mnemonicParsing="false" onAction="#clickBack" text="Назад" />
+   </children>
+</AnchorPane>

@@ -18,6 +18,10 @@ public class SceneName {
     public static String DELETEERRORBOOK ="/DeleteErrorBook.fxml";
 
     public static String ADDFAVOURITESMODAL ="/AddFavouritesModal.fxml";
+    public static String ADDREVIEWWINDOW ="/AddReviewWindow.fxml";
+
+
+
 
 
 //    public static String READERWINDOW="/readerWindow.fxml";

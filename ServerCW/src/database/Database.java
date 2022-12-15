@@ -149,10 +149,10 @@ public class Database {
             SQL ="CREATE TABLE IF NOT EXISTS LibraryReview"
                     +"(id INTEGER PRIMARY KEY AUTO_INCREMENT,"
                     +"readerID INTEGER,"
-                    + "bookID INTEGER NOT NULL UNIQUE,"
+                    + "bookID INTEGER NOT NULL,"
                     + "booktitle VARCHAR (30),"
-                    + "review TEXT,"
-                    + "FOREIGN KEY (bookID) REFERENCES LibraryBooks (IDbook))";
+                    + "review TEXT)";
+//                    + "FOREIGN KEY (bookID) REFERENCES LibraryBooks (IDbook))";
             statement = connection.createStatement();
             statement.executeUpdate(SQL);
 
@@ -319,6 +319,47 @@ public class Database {
         return booksTemp;
     }
 
+    public String getTitleBookByID(String id){
+        String title="Книга не определена";
+        try {
+            ResultSet resultSet=statement.executeQuery("SELECT * FROM `LibraryBooks` WHERE (IDbook ="+id+")" );
+//            +"AND (password ="+ user.getPassword().toString() + ")"
+            while (resultSet.next()){
+
+                 title=resultSet.getString(2);
+
+                System.out.println(title);
+
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return title;
+    }
+
+    public void insertReview(Review review){
+        String SQL = "INSERT INTO LibraryReview(readerID,bookID,booktitle,review) "
+                + "VALUES(?,?,?,?)";
+
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(SQL,
+                    Statement.RETURN_GENERATED_KEYS);
+            pstmt.setString(1, review.getReaderID());
+            pstmt.setString(2, review.getBookID());
+            pstmt.setString(3, review.getTitle());
+            pstmt.setString(4, review.getText());
+
+            int affectedRows = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public Vector<String> getIdFavouritesBooks(String readerID){
         Vector<String> idFavouritesBooks = new Vector<String>();
@@ -429,7 +470,7 @@ public class Database {
 
 
             }
-            System.out.println("Сработало, малышка!!!");
+
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -491,43 +532,52 @@ public class Database {
         try {
             ResultSet resultSet=statement.executeQuery("SELECT * FROM LibraryBooks" );
 //            +"AND (password ="+ user.getPassword().toString() + ")"
-            if (resultSet.next()){
-                System.out.println("запись есть!");
 
                 while (resultSet.next()){
-                    String ID=resultSet.getString(2);
-                    String title=resultSet.getString(3);
-                    String author = resultSet.getString(4);
-                    String publisher=resultSet.getString(5);
-                    String genre=resultSet.getString(6);
-                    String year=resultSet.getString(7);
-                    String count =resultSet.getString(8);
+
+                    String ID=resultSet.getString(1);
+                    String title=resultSet.getString(2);
+                    String author = resultSet.getString(3);
+                    String publisher=resultSet.getString(4);
+                    String genre=resultSet.getString(5);
+                    String year=resultSet.getString(6);
+                    String count =resultSet.getString(7);
                     if(value.equals(ID)==true || value.equals(title)==true  ||value.equals(author)==true  ||value.equals(publisher)==true  ||value.equals(genre) ==true || value.equals(year)==true  || value.equals(year)==true ){
+
                         Book book = new Book(ID,title,publisher,genre,year,count,author);
                         System.out.println(book.getTitle());
                         booksTemp.add(book);
                     }
 
-
-
-//                String g=resultSet.getString(3);
-//                if(g.equals(user.getPassword()))
-//                    flag=true;
-//                System.out.println("ты милашка!");
-
                 }
-            }
-
-
-
-
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return booksTemp;
     }
+
+     public Vector<Review> getReviews(){
+         Vector<Review> reviewsTemp=new Vector<Review>();
+
+         try {
+             ResultSet resultSet=statement.executeQuery("SELECT * FROM `LibraryReview`" );
+
+             while (resultSet.next()){
+                 String readerID=resultSet.getString(2);
+                 String bookID=resultSet.getString(3);
+                 String bookTitle=resultSet.getString(4);
+                 String text=resultSet.getString(5);
+
+                 Review review = new Review(readerID,bookID,bookTitle,text);
+                 reviewsTemp.add(review);
+             }
+
+         } catch (SQLException e) {
+             e.printStackTrace();
+         }
+        return reviewsTemp;
+     }
 
 
 
