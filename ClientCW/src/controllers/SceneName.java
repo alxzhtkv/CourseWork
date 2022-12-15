@@ -19,6 +19,8 @@ public class SceneName {
 
     public static String ADDFAVOURITESMODAL ="/AddFavouritesModal.fxml";
     public static String ADDREVIEWWINDOW ="/AddReviewWindow.fxml";
+    public static String ADDREQUESTWINDOW ="/AddRequestModal.fxml";
+
 
 
 

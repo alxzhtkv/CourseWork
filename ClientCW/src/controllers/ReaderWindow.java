@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import library.Book;
+import library.Request;
 import library.Review;
 import persons.*;
 
@@ -21,6 +22,13 @@ import static controllers.BookManagerWindow.getBookFromDatabase;
 
 public class ReaderWindow {
 
+
+    @FXML
+    private AnchorPane TableRequest;
+    @FXML
+    private Button newRequest;
+    @FXML
+    private Button showRequest;
     @FXML
     private AnchorPane TableReview;
     @FXML
@@ -366,11 +374,60 @@ public class ReaderWindow {
             TableReview.getChildren().add(table);
 
 
+        });
+
+    }
+
+    @FXML
+    void clickNewRequest(ActionEvent event) {
+        newRequest.setOnAction(actionEvent -> {
+            SceneChanger.changeScene("Cоздание запроса", SceneName.ADDREQUESTWINDOW, true);
+        });
+
+    }
+
+    @FXML
+    void clickShowRequest(ActionEvent event) {
+        showRequest.setOnAction(actionEvent -> {
+            Connect.client.sendMessage("showRequests");
+            Connect.client.sendMessage(Connect.id);
+            String size = null;
+            try {
+                size = Connect.client.readMessage();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            int n = Integer.parseInt (size);
+            int count = n;
+            int j = 0;
+
+            Vector<Request> requestVector = new Vector<>();
+
+            for(int i=0;i<count;i++){
+//
+                Request request = (Request)Connect.client.readObject();
+                requestVector.add(request);
+//
+            }
+
+            ObservableList<Request> bk= FXCollections.observableArrayList(requestVector);
+            TableView<Request> table = new TableView<>(bk);
+            table.setPrefWidth(570);
+            table.setPrefHeight(300);
+            table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+            TableColumn<Request,String> titleColumn = new TableColumn<>("Название");
+            titleColumn.setCellValueFactory(new PropertyValueFactory<Request,String>("title"));
+            table.getColumns().add(titleColumn);
 
 
 
-
-
+            AnchorPane.setLeftAnchor(table,0.0);
+            AnchorPane.setBottomAnchor(table,0.0);
+            AnchorPane.setRightAnchor(table,0.0);
+            AnchorPane.setTopAnchor(table,0.0);
+            TableRequest.getChildren().add(table);
         });
 
     }

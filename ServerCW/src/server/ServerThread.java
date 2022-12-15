@@ -284,6 +284,32 @@ public class ServerThread implements Runnable{
                         break;
                     }
 
+                    case "addRequest":{
+                        Request request = (Request) sois.readObject();
+                        database.insertRequest(request);
+
+                        break;
+                    }
+
+                    case "showRequests":{
+                        String idReader = (String) sois.readObject();
+                        Vector<Request> requestVector = database.getRequestsByID(idReader);
+
+                        int size=requestVector.size();
+                        System.out.println(size);
+                        int i=0;
+                        serverMessage=Integer.toString(size);
+                        soos.writeObject(serverMessage);
+
+                        while (i<size){
+                            soos.writeObject(requestVector.get(i));
+                            i++;
+                        }
+
+
+                        break;
+                    }
+
                 }
 
 

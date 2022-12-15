@@ -156,7 +156,15 @@ public class Database {
             statement = connection.createStatement();
             statement.executeUpdate(SQL);
 
+//Request
+            SQL ="CREATE TABLE IF NOT EXISTS LibraryRequest"
+                    +"(id INTEGER PRIMARY KEY AUTO_INCREMENT,"
+                    +"readerID INTEGER,"
 
+                    + "booktitle VARCHAR (30))";
+                    //                    + "FOREIGN KEY (bookID) REFERENCES LibraryBooks (IDbook))";
+            statement = connection.createStatement();
+            statement.executeUpdate(SQL);
 
         }catch (Exception e){
             System.out.println("Error "+e.getMessage());
@@ -580,6 +588,41 @@ public class Database {
      }
 
 
+
+     public void insertRequest(Request request){
+         String SQL = "INSERT INTO LibraryRequest(readerID,booktitle) "
+                 + "VALUES(?,?)";
+
+         try {
+             PreparedStatement pstmt = connection.prepareStatement(SQL,
+                     Statement.RETURN_GENERATED_KEYS);
+             pstmt.setString(1, request.getReaderID());
+             pstmt.setString(2,request.getTitle());
+             int affectedRows = pstmt.executeUpdate();
+         } catch (SQLException e) {
+             throw new RuntimeException(e);
+         }
+     }
+
+     public Vector<Request> getRequestsByID(String readerId){
+         Vector<Request> requestsTemp=new Vector<Request>();
+
+         try {
+             ResultSet resultSet=statement.executeQuery("SELECT * FROM `LibraryRequest`  WHERE (readerID ="+readerId+")" );
+             while (resultSet.next()){
+
+                 String bookTitle =resultSet.getString(3);
+                 Request request = new Request(readerId,bookTitle);
+                 requestsTemp.add(request);
+             }
+
+
+         } catch (SQLException e) {
+             e.printStackTrace();
+         }
+
+         return requestsTemp;
+     }
 
 //    public void authorsSort(){
 //        String SQL="ALTER TABLE LibraryBooks ORDER BY title";

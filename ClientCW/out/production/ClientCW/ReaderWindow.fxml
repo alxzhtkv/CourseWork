@@ -75,7 +75,12 @@
             </Tab>
             <Tab text="Запросы">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="showRequest" layoutX="21.0" layoutY="25.0" mnemonicParsing="false" onAction="#clickShowRequest" text="Посмотреть свои запросы" />
+                        <Button fx:id="newRequest" layoutX="206.0" layoutY="25.0" mnemonicParsing="false" onAction="#clickNewRequest" text="Создать зарос" />
+                        <AnchorPane fx:id="TableRequest" layoutX="21.0" layoutY="63.0" prefHeight="291.0" prefWidth="560.0" />
+                     </children></AnchorPane>
               </content>
             </Tab>
             <Tab text="Рецензии">
