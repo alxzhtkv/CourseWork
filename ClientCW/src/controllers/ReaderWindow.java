@@ -24,6 +24,15 @@ public class ReaderWindow {
 
 
     @FXML
+    private Button addOrder;
+    @FXML
+    private Button cancelOrder;
+    @FXML
+    private Button issuedOrders;
+    @FXML
+    private Button showOrders;
+
+    @FXML
     private AnchorPane TableRequest;
     @FXML
     private Button newRequest;
@@ -431,4 +440,31 @@ public class ReaderWindow {
         });
 
     }
+
+    @FXML
+    void clickAddOrder(ActionEvent event) {
+        addOrder.setOnAction(actionEvent -> {
+            SceneChanger.changeScene("Оформление заказа", SceneName.ADDORDERMODAL, true);
+        });
+
+    }
+    @FXML
+    void clickCancelOrder(ActionEvent event) {
+
+    }
+
+    @FXML
+    void clickIssuedOrders(ActionEvent event) {
+
+    }
+    @FXML
+    void clickShowOrders(ActionEvent event) {
+
+    }
+
+
+
+
+
+
 }

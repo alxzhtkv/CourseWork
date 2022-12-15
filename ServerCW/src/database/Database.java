@@ -350,6 +350,32 @@ public class Database {
         return title;
     }
 
+
+    public String getBookByID(String id){
+        String answer="Не определена;Не определенo";
+        try {
+            ResultSet resultSet=statement.executeQuery("SELECT * FROM `LibraryBooks` WHERE (IDbook ="+id+")" );
+//            +"AND (password ="+ user.getPassword().toString() + ")"
+            while (resultSet.next()){
+
+                String title=resultSet.getString(2);
+                String status = resultSet.getString(7);
+                answer = title + ";" +status;
+
+                System.out.println(answer);
+
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return answer;
+    }
+
     public void insertReview(Review review){
         String SQL = "INSERT INTO LibraryReview(readerID,bookID,booktitle,review) "
                 + "VALUES(?,?,?,?)";
@@ -368,6 +394,23 @@ public class Database {
         }
     }
 
+    public void insertOrder(Order order){
+        String SQL = "INSERT INTO LibraryReview(readerID,bookID,booktitle,review) "
+                + "VALUES(?,?,?,?)";
+
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(SQL,
+                    Statement.RETURN_GENERATED_KEYS);
+            pstmt.setString(1, review.getReaderID());
+            pstmt.setString(2, review.getBookID());
+            pstmt.setString(3, review.getTitle());
+            pstmt.setString(4, review.getText());
+
+            int affectedRows = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public Vector<String> getIdFavouritesBooks(String readerID){
         Vector<String> idFavouritesBooks = new Vector<String>();

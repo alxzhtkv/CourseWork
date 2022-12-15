@@ -70,7 +70,13 @@
             </Tab>
             <Tab text="Заказ">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="addOrder" layoutX="195.0" layoutY="96.0" mnemonicParsing="false" onAction="#clickAddOrder" prefHeight="26.0" prefWidth="180.0" text="Сделать заказ" />
+                        <Button fx:id="showOrders" layoutX="193.0" layoutY="137.0" mnemonicParsing="false" onAction="#clickShowOrders" prefHeight="26.0" prefWidth="182.0" text="Посмотреть свои заказы" />
+                        <Button fx:id="cancelOrder" layoutX="194.0" layoutY="179.0" mnemonicParsing="false" onAction="#clickCancelOrder" prefHeight="26.0" prefWidth="182.0" text="Отменить заказ" />
+                        <Button fx:id="issuedOrders" layoutX="193.0" layoutY="221.0" mnemonicParsing="false" onAction="#clickIssuedOrders" text="Посмотреть выданные заказы" />
+                     </children></AnchorPane>
               </content>
             </Tab>
             <Tab text="Запросы">

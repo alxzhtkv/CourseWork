@@ -256,6 +256,7 @@ public class ServerThread implements Runnable{
                         break;
                     }
 
+
                     case "addReview":{
                         answer = (String) sois.readObject();
                         if(answer.equals("ok")){
@@ -306,6 +307,25 @@ public class ServerThread implements Runnable{
                             i++;
                         }
 
+
+                        break;
+                    }
+
+                    case "checkBook":{
+                        String id = (String) sois.readObject();
+                        String info =database.getBookByID(id);
+                        soos.writeObject(info);
+
+
+                        break;
+                    }
+
+                    case "addOrder":{
+                        answer = (String) sois.readObject();
+                        if(answer.equals("ok")){
+                            Order order = (Order) sois.readObject();
+                            database.insertReview(order);
+                        }
 
                         break;
                     }

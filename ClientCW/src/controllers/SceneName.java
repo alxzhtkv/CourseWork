@@ -21,6 +21,11 @@ public class SceneName {
     public static String ADDREVIEWWINDOW ="/AddReviewWindow.fxml";
     public static String ADDREQUESTWINDOW ="/AddRequestModal.fxml";
 
+    public static String ADDORDERMODAL ="/AddOrderModal.fxml";
+
+
+
+
 
 
 
