@@ -289,7 +289,7 @@ public class Database {
                 String g=resultSet.getString(3);
                 if(g.equals(user.getPassword()))
                     flag=true;
-                System.out.println("ты милашка!");
+
             }
 
 
@@ -318,7 +318,7 @@ public class Database {
                 booksTemp.add(book);
 
             }
-            System.out.println("Сработало, малышка!!!");
+
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -401,10 +401,10 @@ public class Database {
         try {
             PreparedStatement pstmt = connection.prepareStatement(SQL,
                     Statement.RETURN_GENERATED_KEYS);
-            pstmt.setString(1, review.getReaderID());
-            pstmt.setString(2, review.getBookID());
-            pstmt.setString(3, review.getTitle());
-            pstmt.setString(4, review.getText());
+//            pstmt.setString(1, review.getReaderID());
+//            pstmt.setString(2, review.getBookID());
+//            pstmt.setString(3, review.getTitle());
+//            pstmt.setString(4, review.getText());
 
             int affectedRows = pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -455,7 +455,7 @@ public class Database {
 //                System.out.println("ты милашка!");
 
             }
-            System.out.println("Сработало, малышка!!!");
+
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -482,7 +482,7 @@ public class Database {
                  reader = new Reader(login,password,nameReader,surname,patronymic,passportID,phone, birthday);
 
             }
-            System.out.println("Сработало, малышка!!!");
+
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -540,7 +540,7 @@ public class Database {
                 String g=resultSet.getString(3);
                 if(g.equals(user.getPassword()))
                     flag=true;
-                System.out.println("ты милашка!");
+
             }
 
 

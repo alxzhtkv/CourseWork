@@ -149,7 +149,7 @@ public class BookManagerWindow {
             yearColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("year"));
             table.getColumns().add(yearColumn);
 
-            TableColumn<Book,String> countColumn = new TableColumn<>("Количество");
+            TableColumn<Book,String> countColumn = new TableColumn<>("Наличие");
             countColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("count"));
             table.getColumns().add(countColumn);
 

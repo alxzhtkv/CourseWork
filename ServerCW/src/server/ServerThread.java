@@ -61,7 +61,7 @@ public class ServerThread implements Runnable{
 //                        user = getUser();
                         user = (User) sois.readObject();
                         answer = (String) sois.readObject();
-                        System.out.println("хуй, но рабочего характера автризации");
+
 
 
                         user.getLogin();
@@ -126,7 +126,7 @@ public class ServerThread implements Runnable{
                         break;
                     }
                     case "deleteBook":{
-                        System.out.println("зашло удаление");
+
                         answer = (String) sois.readObject();
                         boolean flag=database.deleteBookByID(answer);
                         System.out.println(flag);
@@ -324,7 +324,7 @@ public class ServerThread implements Runnable{
                         answer = (String) sois.readObject();
                         if(answer.equals("ok")){
                             Order order = (Order) sois.readObject();
-                            database.insertReview(order);
+//                            database.insertReview(order);
                         }
 
                         break;
