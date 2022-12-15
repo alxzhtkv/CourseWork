@@ -344,7 +344,32 @@ public class ReaderWindow {
                 reviewVector.add(review);
             }
 
-            
+            ObservableList<Review> bk= FXCollections.observableArrayList(reviewVector);
+            TableView<Review> table = new TableView<>(bk);
+            table.setPrefWidth(570);
+            table.setPrefHeight(300);
+
+            table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+            TableColumn<Review,String> titleColumn = new TableColumn<>("Название");
+            titleColumn.setCellValueFactory(new PropertyValueFactory<Review,String>("title"));
+            table.getColumns().add(titleColumn);
+
+            TableColumn<Review,String> textColumn = new TableColumn<>("Отзыв");
+            textColumn.setCellValueFactory(new PropertyValueFactory<Review,String>("text"));
+            table.getColumns().add(textColumn);
+
+            AnchorPane.setLeftAnchor(table,0.0);
+            AnchorPane.setBottomAnchor(table,0.0);
+            AnchorPane.setRightAnchor(table,0.0);
+            AnchorPane.setTopAnchor(table,0.0);
+            TableReview.getChildren().add(table);
+
+
+
+
+
+
 
         });
 
