@@ -334,7 +334,7 @@ public class ServerThread implements Runnable{
 
                     case "showOrders":{
                         String idReader = (String) sois.readObject();
-                        Vector<Order> ordersVector = database.getOrderByID(idReader);
+                        Vector<Order> ordersVector = database.getOrderByReaderID(idReader);
 
                         int size=ordersVector.size();
                         System.out.println(size);
@@ -351,6 +351,12 @@ public class ServerThread implements Runnable{
                         break;
                     }
 
+                    case "checkOrder":{
+                        String id = (String) sois.readObject();
+                        String info =database.getOrderByID(id);
+                        soos.writeObject(info);
+                        break;
+                    }
                     case "issueOrder":{
                         String idOrder = (String) sois.readObject();
 //                        Boolean flag = database.

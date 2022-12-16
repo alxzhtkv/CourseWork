@@ -687,7 +687,7 @@ public class Database {
         }
     }
 
-    public Vector<Order> getOrderByID(String readerId){
+    public Vector<Order> getOrderByReaderID(String readerId){
         Vector<Order> ordersTemp=new Vector<Order>();
 
         try {
@@ -711,7 +711,28 @@ public class Database {
         return ordersTemp;
     }
 
+    public String getOrderByID(String id){
+        String answer="Не определенo;Не определенo;Не определенo";
+        try {
+            ResultSet resultSet=statement.executeQuery("SELECT * FROM `LibraryOrders` WHERE (orderID ="+id+")" );
+//            +"AND (password ="+ user.getPassword().toString() + ")"
+            while (resultSet.next()){
+                String reader = resultSet.getString(2);
+                String bookID = resultSet.getString(3);
+                String title=resultSet.getString(4);
 
+
+                answer = title + ";" +reader + ";"+bookID;
+
+                System.out.println(answer);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return answer;
+    }
     public boolean searchAndUpdateOrder(String orderID){
         boolean flag= false;
 
