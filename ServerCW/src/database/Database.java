@@ -774,6 +774,8 @@ public class Database {
                         statusBook=resultSetBook.getString(1);
                         if(statusBook.equals("в наличии")){
                             flag=true;
+
+
                         }
                     }
                 }
@@ -793,6 +795,21 @@ public class Database {
                     pstmt.setString(5, order.getDateI());
                     pstmt.setString(6, order.getDateB());
                     int affectedRows = pstmt.executeUpdate();
+
+                    SQL="UPDATE LibraryOrders SET status=? WHERE OrderID="+order.getOrderID();
+                    PreparedStatement preparedStmt = connection.prepareStatement(SQL);
+                    String status = "выдан";
+                    preparedStmt.setString (1, status);
+                    preparedStmt.executeUpdate();
+                    System.out.println("Table1 is update");
+
+                    SQL="UPDATE Librarybooks SET status=? WHERE IDbook="+order.getBooksID();
+                    PreparedStatement preparedStmtBook = connection.prepareStatement(SQL);
+                    status = "выдана";
+                    preparedStmtBook.setString (1, status);
+                    preparedStmtBook.executeUpdate();
+                    System.out.println("Table2 is update");
+
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
