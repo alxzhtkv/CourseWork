@@ -168,6 +168,20 @@ public class Database {
             statement = connection.createStatement();
             statement.executeUpdate(SQL);
 
+
+            SQL ="CREATE TABLE IF NOT EXISTS LibraryIssuedOrders"
+                    +"(id INTEGER PRIMARY KEY AUTO_INCREMENT,"
+                    + "orderID INTEGER NOT NULL UNIQUE,"
+                    + "bookID INTEGER NOT NULL,"
+                    + "booktitle VARCHAR (30),"
+                    + "readerID INTEGER,"
+                    + "dateI VARCHAR (30),"
+                    + "dateb  VARCHAR (30))";
+
+//                    + "FOREIGN KEY (bookID) REFERENCES LibraryBooks (IDbook))";
+            statement = connection.createStatement();
+            statement.executeUpdate(SQL);
+
         }catch (Exception e){
             System.out.println("Error "+e.getMessage());
             if(statement!=null){
@@ -766,7 +780,22 @@ public class Database {
             }
 
             if(flag){
-                System.out.println(flag);
+                String SQL = "INSERT INTO LibraryIssuedOrders(orderID,bookID,booktitle,readerID,dateI,dateb) "
+                        + "VALUES(?,?,?,?,?,?)";
+
+                try {
+                    PreparedStatement pstmt = connection.prepareStatement(SQL,
+                            Statement.RETURN_GENERATED_KEYS);
+                    pstmt.setString(1, order.getOrderID());
+                    pstmt.setString(2, order.getBooksID());
+                    pstmt.setString(3, order.getBookTitle());
+                    pstmt.setString(4, order.getReaderID());
+                    pstmt.setString(5, order.getDateI());
+                    pstmt.setString(6, order.getDateB());
+                    int affectedRows = pstmt.executeUpdate();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
             }
 
         } catch (SQLException e) {
