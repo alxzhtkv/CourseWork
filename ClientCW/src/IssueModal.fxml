@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="316.0" prefWidth="426.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.IssueModal">
+   <children>
+      <Text layoutX="153.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Выдача заказа">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="25.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите номер заказа:" />
+      <TextField fx:id="orderID" layoutX="25.0" layoutY="76.0" />
+      <Button fx:id="send" layoutX="175.0" layoutY="269.0" mnemonicParsing="false" onAction="#clickSend" text="Выдать" />
+      <Button fx:id="ok" layoutX="183.0" layoutY="75.0" mnemonicParsing="false" onAction="#clickOk" prefHeight="26.0" prefWidth="38.0" text="Ок" />
+      <Label fx:id="bookTitle" layoutX="108.0" layoutY="117.0" prefHeight="18.0" prefWidth="305.0" text="Не опредедено" />
+      <Label fx:id="resderID" layoutX="108.0" layoutY="147.0" prefHeight="18.0" prefWidth="150.0" text="Не определено" />
+      <Text layoutX="25.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Книга:" />
+      <Text layoutX="25.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Читатель:" />
+      <DatePicker fx:id="dateI" layoutX="155.0" layoutY="178.0" />
+      <Text layoutX="27.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Дата выдачи:" />
+      <Text layoutX="27.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Дата возврата:" />
+      <DatePicker fx:id="dateB" layoutX="155.0" layoutY="220.0" />
+   </children>
+</AnchorPane>

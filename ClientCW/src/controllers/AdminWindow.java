@@ -60,7 +60,7 @@ public class AdminWindow {
     @FXML
     void enterworkWitchOrder(ActionEvent event) {
         workWitchOrder.setOnAction(actionEvent -> {
-            SceneChanger.changeScene("Управление заказами",SceneName.DELETEBOOKMODAL,true);
+            SceneChanger.changeScene("Управление заказами",SceneName.ORDERMANAGERWINDOW,false);
 
         });
     }

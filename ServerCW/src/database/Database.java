@@ -711,6 +711,44 @@ public class Database {
         return ordersTemp;
     }
 
+
+    public boolean searchAndUpdateOrder(String orderID){
+        boolean flag= false;
+
+
+
+
+        return flag;
+    }
+
+
+//    public void editPassenger(Passenger passenger) throws SQLException {
+//        String SQL="SELECT passenger_id FROM passenger WHERE person_id="+passenger.getPassenger_id();
+//        ResultSet resultSet=statement.executeQuery(SQL);
+//        int id=0;
+//        if(resultSet.next()){
+//            id=(resultSet.getInt(1));
+//        }
+//        System.out.println(passenger.getPassenger_id());
+//        SQL="UPDATE person SET surname=?, name=?, patronymic=?, phone=?, login=?, password=? WHERE person_id="+passenger.getPassenger_id();
+//        PreparedStatement preparedStmt = connection.prepareStatement(SQL);
+//        System.out.println(passenger.getSurname());
+//        preparedStmt.setString (1, passenger.getSurname());
+//        preparedStmt.setString(2, passenger.getName());
+//        preparedStmt.setString(3, passenger.getPatronymic());
+//        preparedStmt.setString(4, passenger.getPhone());
+//        preparedStmt.setString(5, passenger.getLogin());
+//        preparedStmt.setString(6, passenger.getPassword());
+//        preparedStmt.executeUpdate();
+//        System.out.println("Table Person is update");
+//        SQL="UPDATE passenger SET email=?, pass_number=?, age=? WHERE passenger_id="+id;
+//        preparedStmt=connection.prepareStatement(SQL);
+//        preparedStmt.setString(1,passenger.getEmail());
+//        preparedStmt.setString(2,passenger.getPass_number());
+//        preparedStmt.setInt(3,passenger.getAge());
+//        preparedStmt.executeUpdate();
+//        System.out.println("Table Passenger is update");
+//    }
 //    public void authorsSort(){
 //        String SQL="ALTER TABLE LibraryBooks ORDER BY title";
 //

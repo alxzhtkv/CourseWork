@@ -25,6 +25,10 @@ public class SceneName {
     public static String SHOWORDERMODAL ="/ShowOrderModal.fxml";
 
     public static String ORDERMANAGERWINDOW="/OrderManagerWindow.fxml";
+    public static String ISSUEMODAL="/IssueModal.fxml";
+
+
+
 
 
 
