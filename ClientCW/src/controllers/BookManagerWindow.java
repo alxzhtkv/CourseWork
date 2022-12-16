@@ -70,7 +70,7 @@ public class BookManagerWindow {
     @FXML
     void clickDelete(ActionEvent event) {
         delete.setOnAction(actionEvent -> {
-            SceneChanger.changeScene("Удаление",SceneName.DELETEBOOKMODAL,false);
+            SceneChanger.changeScene("Удаление",SceneName.DELETEBOOKMODAL,true);
 
         });
 

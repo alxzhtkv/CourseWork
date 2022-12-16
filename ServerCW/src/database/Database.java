@@ -82,14 +82,14 @@ public class Database {
             String SQL ="CREATE TABLE IF NOT EXISTS LibraryUser"
                     +"(id INTEGER PRIMARY KEY AUTO_INCREMENT,"
                     +"login INTEGER NOT NULL UNIQUE,"
-                    + "password VARCHAR (30) NOT NULL UNIQUE)";
+                    + "password VARCHAR (30) NOT NULL)";
             statement = connection.createStatement();
             statement.executeUpdate(SQL);
 
             SQL ="CREATE TABLE IF NOT EXISTS LibraryAdmin"
                     +"(id INTEGER PRIMARY KEY AUTO_INCREMENT,"
                     +"login INTEGER NOT NULL UNIQUE,"
-                    + "password VARCHAR (30) NOT NULL UNIQUE)";
+                    + "password VARCHAR (30) NOT NULL)";
             statement = connection.createStatement();
             statement.executeUpdate(SQL);
 
@@ -132,7 +132,7 @@ public class Database {
             SQL ="CREATE TABLE IF NOT EXISTS LibraryFavourites"
                     +"(id INTEGER PRIMARY KEY AUTO_INCREMENT,"
                     +"readerID INTEGER,"
-                    + "bookID INTEGER NOT NULL UNIQUE,"
+                    + "bookID INTEGER NOT NULL,"
                     + "FOREIGN KEY (bookID) REFERENCES LibraryBooks (IDbook))";
             statement = connection.createStatement();
             statement.executeUpdate(SQL);
@@ -140,9 +140,11 @@ public class Database {
             SQL ="CREATE TABLE IF NOT EXISTS LibraryOrders"
                     +"(id INTEGER PRIMARY KEY AUTO_INCREMENT,"
                     +"readerID INTEGER,"
-                    + "bookID INTEGER NOT NULL UNIQUE,"
+                    + "bookID INTEGER NOT NULL,"
+                    + "booktitle VARCHAR (30),"
                     + "orderID INTEGER NOT NULL UNIQUE,"
-                    + "FOREIGN KEY (bookID) REFERENCES LibraryBooks (IDbook))";
+                    + "status  VARCHAR (30))";
+//                    + "FOREIGN KEY (bookID) REFERENCES LibraryBooks (IDbook))";
             statement = connection.createStatement();
             statement.executeUpdate(SQL);
 
@@ -394,23 +396,6 @@ public class Database {
         }
     }
 
-    public void insertOrder(Order order){
-        String SQL = "INSERT INTO LibraryReview(readerID,bookID,booktitle,review) "
-                + "VALUES(?,?,?,?)";
-
-        try {
-            PreparedStatement pstmt = connection.prepareStatement(SQL,
-                    Statement.RETURN_GENERATED_KEYS);
-//            pstmt.setString(1, review.getReaderID());
-//            pstmt.setString(2, review.getBookID());
-//            pstmt.setString(3, review.getTitle());
-//            pstmt.setString(4, review.getText());
-
-            int affectedRows = pstmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public Vector<String> getIdFavouritesBooks(String readerID){
         Vector<String> idFavouritesBooks = new Vector<String>();
@@ -487,17 +472,34 @@ public class Database {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        try {
-            ResultSet resultSet=statement.executeQuery("SELECT * FROM `LibraryUser`  WHERE (login ="+id+")" );
-            while (resultSet.next()){
-                password=resultSet.getString(3);
-               reader.setPassword(password);
+
+        if(reader!=null){
+            try {
+                ResultSet resultSet=statement.executeQuery("SELECT * FROM `LibraryUser` WHERE (login ="+id+")" );
+
+                while (resultSet.next()){
+
+                    password=resultSet.getString(3);
+                    reader.setPassword(password);
+                }
+
+
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
+
+//        try {
+//            ResultSet resultSet=statement.executeQuery("SELECT * FROM `LibraryUser`  WHERE (login ="+id+")" );
+//            while (resultSet.next()){
+//                password=resultSet.getString(3);
+//               reader.setPassword(password);
+//            }
+//
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
 
         return reader;
     }
@@ -666,6 +668,48 @@ public class Database {
 
          return requestsTemp;
      }
+
+    public void insertOrder(Order order){
+        String SQL = "INSERT INTO LibraryOrders(readerID,bookID,booktitle, orderID,status) "
+                + "VALUES(?,?,?,?,?)";
+
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(SQL,
+                    Statement.RETURN_GENERATED_KEYS);
+            pstmt.setString(1, order.getReaderID());
+            pstmt.setString(2, order.getBooksID());
+            pstmt.setString(3, order.getBookTitle());
+            pstmt.setString(4, order.getOrderID());
+            pstmt.setString(5, order.getStatus());
+            int affectedRows = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Vector<Order> getOrderByID(String readerId){
+        Vector<Order> ordersTemp=new Vector<Order>();
+
+        try {
+            ResultSet resultSet=statement.executeQuery("SELECT * FROM `LibraryOrders`  WHERE (readerID ="+readerId+")" );
+            while (resultSet.next()){
+
+                String bookID = resultSet.getString(3);
+                String bookTitle = resultSet.getString(4);
+                String orderID = resultSet.getString(5);
+                String status = resultSet.getString(6);
+                Order order = new Order(readerId,bookID,orderID,status,bookTitle);
+//                Request request = new Request(readerId,bookTitle);
+                ordersTemp.add(order);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ordersTemp;
+    }
 
 //    public void authorsSort(){
 //        String SQL="ALTER TABLE LibraryBooks ORDER BY title";

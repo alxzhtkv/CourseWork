@@ -323,9 +323,30 @@ public class ServerThread implements Runnable{
                     case "addOrder":{
                         answer = (String) sois.readObject();
                         if(answer.equals("ok")){
+//                            Vector<Book> books = database.getBooksFromDatabase();
                             Order order = (Order) sois.readObject();
+                            database.insertOrder(order);
 //                            database.insertReview(order);
                         }
+
+                        break;
+                    }
+
+                    case "showOrders":{
+                        String idReader = (String) sois.readObject();
+                        Vector<Order> ordersVector = database.getOrderByID(idReader);
+
+                        int size=ordersVector.size();
+                        System.out.println(size);
+                        int i=0;
+                        serverMessage=Integer.toString(size);
+                        soos.writeObject(serverMessage);
+
+                        while (i<size){
+                            soos.writeObject(ordersVector.get(i));
+                            i++;
+                        }
+
 
                         break;
                     }

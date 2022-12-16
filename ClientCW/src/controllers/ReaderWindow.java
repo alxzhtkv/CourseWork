@@ -154,6 +154,7 @@ public class ReaderWindow {
         show.setOnAction(actionEvent -> {
             Connect.client.sendMessage("getReader");
             Connect.client.sendMessage(Connect.id);
+            System.out.println(Connect.id);
             Reader reader = (Reader) Connect.client.readObject();
           ;
             System.out.println( "yfyfyf "+Connect.id);
@@ -273,7 +274,7 @@ public class ReaderWindow {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            System.out.println("оличество избранного "+size);
+
             int n = Integer.parseInt (size);
             int count = n;
             int j = 0;
@@ -462,6 +463,14 @@ public class ReaderWindow {
     }
     @FXML
     void clickShowOrders(ActionEvent event) {
+        showOrders.setOnAction(actionEvent -> {
+            SceneChanger.changeScene("Просмотр заказов", SceneName.SHOWORDERMODAL, true);
+        });
+
+
+    }
+
+
 
     }
 
@@ -470,4 +479,3 @@ public class ReaderWindow {
 
 
 
-}

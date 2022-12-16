@@ -31,7 +31,9 @@ public class AdminWindow {
 
 
     @FXML
-    void enterWorkWithRequests(){}
+    void enterWorkWithRequests(){
+
+    }
     @FXML
     void enterBack(ActionEvent event) {
         backBttn.setOnAction(actionEvent -> {
@@ -57,7 +59,10 @@ public class AdminWindow {
 
     @FXML
     void enterworkWitchOrder(ActionEvent event) {
+        workWitchOrder.setOnAction(actionEvent -> {
+            SceneChanger.changeScene("Управление заказами",SceneName.DELETEBOOKMODAL,true);
 
+        });
     }
 
     @FXML

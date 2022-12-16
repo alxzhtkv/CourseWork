@@ -60,12 +60,14 @@ public class AddOrderModal {
             String idBook = bookId.getText();
             String idReader=Connect.id;
             String status = statusL.getText();
+            String bookTitle =titleL.getText();
+
             if(status.equals("Не определенo")){
                 SceneChanger.changeScene("Ошибка",SceneName.DELETEERRORBOOK,true);
                 Connect.client.sendMessage("notOk");
             }
             else {
-                Order order = new Order(idReader,idBook);
+                Order order = new Order(idReader,idBook,bookTitle);
                 Connect.client.sendMessage("ok");
                 Connect.client.sendObject(order);
                 SceneChanger.changeScene("Завершено",SceneName.DELETEOKBOOK,true);
