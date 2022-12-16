@@ -17,6 +17,16 @@ public class Order implements Serializable {
 
     }
 
+
+
+    public Order(String readerID, String booksID, String orderID, String bookTitle) {
+        this.readerID = readerID;
+        this.booksID = booksID;
+        this.orderID = orderID;
+        this.bookTitle = bookTitle;
+        this.status="обработан";
+    }
+
     public Order(String readerID, String booksID, String orderID, String status, String bookTitle) {
         this.readerID = readerID;
         this.booksID = booksID;

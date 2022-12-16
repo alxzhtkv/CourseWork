@@ -68,11 +68,23 @@ public class IssueModal {
     @FXML
     void clickSend(ActionEvent event) {
         send.setOnAction(actionEvent -> {
+
+
+
             String reader = readerID.getText();
+
             if(!reader.equals("Не определенo")) {
                 Connect.client.sendMessage("issueOrder");
+
                 String order = orderID.getText();
                 String book = bookTitle.getText();
+                String bookID= bookIdL.getText();
+                String Idate = dateI.getValue().toString();
+                System.out.println(Idate);
+                String Bdate = dateB.getValue().toString();
+
+                IssuedOrder issuedOrder = new IssuedOrder(order,reader,bookID,book,Idate,Bdate);
+                Connect.client.sendObject(issuedOrder);
 
             }
 

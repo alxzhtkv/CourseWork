@@ -743,6 +743,45 @@ public class Database {
     }
 
 
+    public boolean checkOrderAvailability(IssuedOrder order){
+        boolean flag=false;
+        String statusOrder="";
+        String statusBook="";
+        try {
+            ResultSet resultSet=statement.executeQuery("SELECT status FROM `LibraryOrders` WHERE (orderID ="+order.getOrderID()+")" );
+
+
+            if (resultSet.next()){
+                statusOrder=resultSet.getString(1);
+                if(statusOrder.equals("обработан")){
+                    ResultSet resultSetBook =statement.executeQuery("SELECT status FROM `LibraryBooks` WHERE (IDbook ="+order.getBooksID()+")" );
+
+                    if (resultSetBook.next()){
+                        statusBook=resultSetBook.getString(1);
+                        if(statusBook.equals("в наличии")){
+                            flag=true;
+                        }
+                    }
+                }
+            }
+
+            if(flag){
+                System.out.println(flag);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        return flag;
+    }
+
+
+
+
+
+
 //    public void editPassenger(Passenger passenger) throws SQLException {
 //        String SQL="SELECT passenger_id FROM passenger WHERE person_id="+passenger.getPassenger_id();
 //        ResultSet resultSet=statement.executeQuery(SQL);

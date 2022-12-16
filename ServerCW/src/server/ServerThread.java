@@ -358,7 +358,13 @@ public class ServerThread implements Runnable{
                         break;
                     }
                     case "issueOrder":{
-                        String idOrder = (String) sois.readObject();
+
+                        IssuedOrder issuedOrder = (IssuedOrder) sois.readObject();
+
+                        String orderBookID = issuedOrder.getBooksID();
+                        database.checkOrderAvailability(issuedOrder);
+
+
 //                        Boolean flag = database.
                         break;
                     }
