@@ -747,6 +747,31 @@ public class Database {
 
         return answer;
     }
+
+    public String getIssuedOrderByID(String id){
+        String answer="Не определенo;Не определенo;Не определенo;Не определенo;Не определенo";
+        try {
+            ResultSet resultSet=statement.executeQuery("SELECT * FROM `LibraryIssuedOrders` WHERE (orderID ="+id+")" );
+//            +"AND (password ="+ user.getPassword().toString() + ")"
+            while (resultSet.next()){
+                String reader = resultSet.getString(5);
+                String bookID = resultSet.getString(3);
+                String title=resultSet.getString(4);
+                String dateI =resultSet.getString(6);
+                String dateB =resultSet.getString(7);
+
+
+                answer = title + ";" +reader + ";"+bookID+ ";"+dateI+ ";"+dateB;
+
+                System.out.println(answer);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return answer;
+    }
     public boolean searchAndUpdateOrder(String orderID){
         boolean flag= false;
 
@@ -766,13 +791,16 @@ public class Database {
 
 
             if (resultSet.next()){
+
                 statusOrder=resultSet.getString(1);
                 if(statusOrder.equals("обработан")){
+
                     ResultSet resultSetBook =statement.executeQuery("SELECT status FROM `LibraryBooks` WHERE (IDbook ="+order.getBooksID()+")" );
 
                     if (resultSetBook.next()){
                         statusBook=resultSetBook.getString(1);
                         if(statusBook.equals("в наличии")){
+
                             flag=true;
 
 
@@ -782,6 +810,7 @@ public class Database {
             }
 
             if(flag){
+
                 String SQL = "INSERT INTO LibraryIssuedOrders(orderID,bookID,booktitle,readerID,dateI,dateb) "
                         + "VALUES(?,?,?,?,?,?)";
 
@@ -809,6 +838,63 @@ public class Database {
                     preparedStmtBook.setString (1, status);
                     preparedStmtBook.executeUpdate();
                     System.out.println("Table2 is update");
+
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        return flag;
+    }
+
+
+    public boolean returnOrder(String bookID,String orderID){
+        boolean flag=false;
+        String statusOrder="";
+        String statusBook="";
+        try {
+            ResultSet resultSet=statement.executeQuery("SELECT status FROM `LibraryOrders` WHERE (orderID ="+orderID+")" );
+
+
+            if (resultSet.next()){
+                statusOrder=resultSet.getString(1);
+                if(statusOrder.equals("выдан")){
+                    ResultSet resultSetBook =statement.executeQuery("SELECT status FROM `LibraryBooks` WHERE (IDbook ="+bookID+")" );
+
+                    if (resultSetBook.next()){
+                        statusBook=resultSetBook.getString(1);
+                        if(statusBook.equals("выдана")){
+                            flag=true;
+
+
+                        }
+                    }
+                }
+            }
+
+            if(flag){
+
+                try {
+                    String SQL = "DELETE FROM LibraryIssuedOrders " +
+                            "WHERE (orderID ="+orderID+")";
+
+                    statement.executeUpdate(SQL);
+
+                    SQL="DELETE FROM LibraryOrders WHERE orderID="+orderID;
+                    statement.executeUpdate(SQL);
+                    System.out.println("LibraryOrders is update");
+
+                    SQL="UPDATE Librarybooks SET status=? WHERE IDbook="+bookID;
+                    PreparedStatement preparedStmtBook = connection.prepareStatement(SQL);
+                    String status = "в наличии";
+                    preparedStmtBook.setString (1, status);
+                    preparedStmtBook.executeUpdate();
+                    System.out.println("Librarybooks is update");
 
                 } catch (SQLException e) {
                     throw new RuntimeException(e);

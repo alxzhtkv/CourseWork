@@ -357,12 +357,45 @@ public class ServerThread implements Runnable{
                         soos.writeObject(info);
                         break;
                     }
+
+                    case "checkReturnOrder":{
+                        String id = (String) sois.readObject();
+                        String info =database.getIssuedOrderByID(id);
+                        soos.writeObject(info);
+                        break;
+                    }
                     case "issueOrder":{
 
                         IssuedOrder issuedOrder = (IssuedOrder) sois.readObject();
+                        boolean flag= database.checkOrderAvailability(issuedOrder);
+                        System.out.println(flag);
+                        serverMessage ="add";
+                        if(flag){
+                            soos.writeObject(serverMessage);
+                        }else {
+                            serverMessage ="error";
+                            soos.writeObject(serverMessage);
+                        }
 
-                        String orderBookID = issuedOrder.getBooksID();
-                        database.checkOrderAvailability(issuedOrder);
+
+//                        Boolean flag = database.
+                        break;
+                    }
+
+
+                    case "returnOrder":{
+
+                        String bookID = (String) sois.readObject();
+                        String orderID = (String) sois.readObject();
+
+                        boolean flag= database.returnOrder(bookID,orderID);
+                        serverMessage ="ok";
+                        if(flag){
+                            soos.writeObject(serverMessage);
+                        }else {
+                            serverMessage ="error";
+                            soos.writeObject(serverMessage);
+                        }
 
 
 //                        Boolean flag = database.

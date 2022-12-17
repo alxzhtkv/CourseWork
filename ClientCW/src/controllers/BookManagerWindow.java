@@ -171,6 +171,10 @@ public class BookManagerWindow {
     @FXML
     void clickSort(ActionEvent event) {
 
+        sort.setOnAction(actionEvent -> {
+            SceneChanger.changeScene("Поиск",SceneName.REPORTSMODAL,true);
+
+        });
     }
 
    static public Book getBookFromDatabase(){

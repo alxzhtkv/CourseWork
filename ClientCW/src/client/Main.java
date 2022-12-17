@@ -1,6 +1,7 @@
 package client;
 import java.io.IOException;
 
+
 import controllers.SceneName;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +23,7 @@ public class Main extends Application {
         currentStage.setTitle("Library");
         currentStage.setScene(scene);
         currentStage.show();
+
     }
 
     public static void main(String[] arg)

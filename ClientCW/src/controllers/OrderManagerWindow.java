@@ -40,6 +40,11 @@ public class OrderManagerWindow {
     @FXML
     void clickRefundOrder(ActionEvent event) {
 
+        refundOrder.setOnAction(actionEvent -> {
+            SceneChanger.changeScene("Возврат заказа",SceneName.RETURNMODAL,true);
+
+        });
+
     }
 
     @FXML

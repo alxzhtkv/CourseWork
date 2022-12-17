@@ -24,7 +24,7 @@
                      <children>
                         <Button fx:id="add" layoutX="236.0" layoutY="65.0" mnemonicParsing="false" onAction="#clickAdd" text="Добавить запись" />
                         <Button fx:id="edit" layoutX="237.0" layoutY="102.0" mnemonicParsing="false" onAction="#clickEdit" prefHeight="26.0" prefWidth="106.0" text="Редактировать" />
-                        <Button fx:id="sort" layoutX="236.0" layoutY="138.0" mnemonicParsing="false" onAction="#clickSort" prefHeight="26.0" prefWidth="108.0" text="Сортировать" />
+                        <Button fx:id="sort" layoutX="236.0" layoutY="138.0" mnemonicParsing="false" onAction="#clickSort" prefHeight="26.0" prefWidth="108.0" text="Отчетность" />
                         <Button fx:id="search" layoutX="237.0" layoutY="173.0" mnemonicParsing="false" onAction="#clickSearch" prefHeight="26.0" prefWidth="106.0" text="Поиск" />
                         <Button fx:id="delete" layoutX="237.0" layoutY="211.0" mnemonicParsing="false" onAction="#clickDelete" prefHeight="26.0" prefWidth="106.0" text="Удаление" />
                         <Button fx:id="back" layoutX="237.0" layoutY="249.0" mnemonicParsing="false" onAction="#clickBack" prefHeight="26.0" prefWidth="106.0" text="Выйти" />
