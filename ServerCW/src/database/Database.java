@@ -910,8 +910,60 @@ public class Database {
     }
 
 
+    public Vector<String> getGenreForDiagram(){
+        Vector<String> data = new Vector<String>();
+        String status;
+        String genre = "";
+        int novel=0;
+        int detective=0;
+        int scienceFiction = 0;
+        int fantasy=0;
+        int other=0;
 
 
+
+
+        try {
+            ResultSet resultSet=statement.executeQuery("SELECT * FROM `LibraryBooks`" );
+
+            while (resultSet.next()){
+                status=resultSet.getString(7);
+                if(status.equals("выдана")){
+                    genre=resultSet.getString(5);
+                    if(genre.equals("Роман")){
+                        novel++;
+
+                    } else if (genre.equals("Детектив")) {
+                        detective++;
+                    }
+                    else if(genre.equals("Фантастика")){
+                        scienceFiction++;
+                    }
+                    else if(genre.equals("Фентези")){
+                        fantasy++;
+                    } else
+                        other++;
+
+                }
+
+
+            }
+
+            data.add(Integer.toString(novel));
+            data.add(Integer.toString(detective));
+            data.add(Integer.toString(scienceFiction));
+            data.add(Integer.toString(fantasy));
+            data.add(Integer.toString(other));
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+
+        return data;
+    }
 
 
 //    public void editPassenger(Passenger passenger) throws SQLException {

@@ -402,6 +402,19 @@ public class ServerThread implements Runnable{
                         break;
                     }
 
+                    case "createDiagram":{
+                        Vector<String> data = database.getGenreForDiagram();
+                        serverMessage=Integer.toString(data.size());
+                        soos.writeObject(serverMessage);
+
+                        for(int i=0;i<data.size();i++){
+                            soos.writeObject(data.get(i));
+                            System.out.println(data.get(i));
+                        }
+
+                        break;
+                    }
+
                 }
 
 
