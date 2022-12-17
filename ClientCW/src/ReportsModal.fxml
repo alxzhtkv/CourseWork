@@ -20,9 +20,13 @@
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab text="Отчет по ">
+            <Tab text="Отчет выданных книг ">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="DiagramAllBooks" layoutX="29.0" layoutY="160.0" mnemonicParsing="false" onAction="#createDiagramAllBooks" text="Создать" />
+                        <PieChart fx:id="reportAllBooks" layoutX="103.0" layoutY="18.0" prefHeight="332.0" prefWidth="490.0" />
+                     </children></AnchorPane>
               </content>
             </Tab>
         </tabs>

@@ -17,9 +17,14 @@ public class ReportsModal {
 
     @FXML
     private Button createDiagram;
+    @FXML
+    private Button DiagramAllBooks;
+
 
     @FXML
     private PieChart genreReport;
+    @FXML
+    private PieChart reportAllBooks;
 
     @FXML
     void clickCreateDiagram(ActionEvent event) {
@@ -60,9 +65,43 @@ public class ReportsModal {
             genreReport.setTitle("Статистика предпочитаемой пользователями литературы");
         });
 
+    }
+
+    @FXML
+    void createDiagramAllBooks(ActionEvent event) {
+        DiagramAllBooks.setOnAction(actionEvent -> {
+
+            Connect.client.sendMessage("createDiagramAllBooks");
+
+            String size = null;
+            try {
+                size = Connect.client.readMessage();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println(size);
+            int n = Integer.parseInt (size);
+            int count = n;
+            int j = 0;
+
+            Vector<Integer> data = new Vector<Integer>();
+
+            for(int i=0;i<count;i++){
+                String st = (String) Connect.client.readObject();
+                int d = Integer.parseInt (st);
+                data.add(d);
+
+            }
 
 
 
+            ObservableList<PieChart.Data> pieChartData =
+                    FXCollections.observableArrayList(
+                            new PieChart.Data("Выданные книги", data.get(1)),
+                            new PieChart.Data("Книги в наличии", data.get(0)));
+            reportAllBooks.setData(pieChartData);
+            reportAllBooks.setTitle("Статистика выданных книг");
+        });
     }
 
 }

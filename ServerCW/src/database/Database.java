@@ -966,6 +966,34 @@ public class Database {
     }
 
 
+    public Vector<String> getBooksForDiagram(){
+        Vector<String> data = new Vector<String>();
+        String status;
+        String genre = "";
+        int fund=0;
+        int onHand=0;
+
+        try {
+            ResultSet resultSet=statement.executeQuery("SELECT * FROM `LibraryBooks`" );
+
+            while (resultSet.next()){
+                status=resultSet.getString(7);
+                if(status.equals("выдана")){
+                    onHand++;
+                } else
+                    fund++;
+
+                }
+
+
+            } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+            data.add(Integer.toString(fund));
+            data.add(Integer.toString(onHand));
+
+        return data;
+    }
 //    public void editPassenger(Passenger passenger) throws SQLException {
 //        String SQL="SELECT passenger_id FROM passenger WHERE person_id="+passenger.getPassenger_id();
 //        ResultSet resultSet=statement.executeQuery(SQL);

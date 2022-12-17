@@ -415,6 +415,19 @@ public class ServerThread implements Runnable{
                         break;
                     }
 
+                    case "createDiagramAllBooks":{
+                        Vector<String> data = database.getBooksForDiagram();
+                        serverMessage = Integer.toString(data.size());
+                        soos.writeObject(serverMessage);
+
+                        for(int i=0;i<data.size();i++){
+                            soos.writeObject(data.get(i));
+                            System.out.println(data.get(i));
+                        }
+
+                        break;
+                    }
+
                 }
 
 
