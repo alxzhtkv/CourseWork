@@ -37,6 +37,8 @@ public class SceneName {
 
     public static String INFORDERMODAL="/InfOrderModal.fxml";
 
+    public static String DELETEORDERMODAL ="/DeleteOrderModal.fxml";
+
 
 
 

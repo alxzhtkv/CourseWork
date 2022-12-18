@@ -206,6 +206,21 @@ public class ServerThread implements Runnable{
 
                     }
 
+                    case "deleteOrder":{
+                        String orderID = (String) sois.readObject();
+                        boolean flag=database.deleteOrderByID(orderID);
+                        System.out.println(flag);
+
+                        if(flag){
+                            serverMessage="deleted";
+                        }else serverMessage="error";
+                        soos.writeObject(serverMessage);
+
+                        break;
+
+
+                    }
+
 
 
                     case "addAdmin":{

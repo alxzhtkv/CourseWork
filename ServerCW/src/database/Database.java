@@ -647,9 +647,42 @@ public class Database {
 
 
 
+
         return flag;
     }
 
+    public Boolean deleteOrderByID(String id){
+        boolean flag=false;
+        String status="";
+        try {
+
+                ResultSet resultSet =statement.executeQuery("SELECT status FROM LibraryOrders WHERE (orderID ="+ id +")" );
+                if(resultSet.next()){
+                    System.out.println("нашел заказы");
+                    status=resultSet.getString(1);
+                    if(status.equals("обработан")){
+                        flag=true;
+                    }
+                }
+
+            if(flag){
+                String sql = "DELETE FROM LibraryOrders " +
+                        "WHERE (orderID ="+id+")";
+                statement.executeUpdate(sql);
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+
+        return flag;
+    }
     public  Vector<Book> searchBook(String value){
         Vector<Book> booksTemp=new Vector<Book>();
         boolean flag=false;

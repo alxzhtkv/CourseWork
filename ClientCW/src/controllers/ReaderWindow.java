@@ -454,6 +454,9 @@ public class ReaderWindow {
     }
     @FXML
     void clickCancelOrder(ActionEvent event) {
+        cancelOrder.setOnAction(actionEvent -> {
+            SceneChanger.changeScene("Удаление заказа", SceneName.DELETEORDERMODAL, true);
+        });
 
     }
 
