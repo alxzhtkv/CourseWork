@@ -73,7 +73,12 @@ public class AdminWindow {
     }
 
     @FXML
-    void enterWorkWitchUsers(){}
+    void enterWorkWitchUsers(){
+        workWitchUsers.setOnAction(actionEvent -> {
+            SceneChanger.changeScene("Управление читателями",SceneName.USERMANAGERWINDOW,false);
+
+        });
+    }
 
 
 }

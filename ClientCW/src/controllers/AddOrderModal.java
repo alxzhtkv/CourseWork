@@ -9,8 +9,11 @@ import javafx.scene.control.TextField;
 import library.Order;
 
 import java.io.IOException;
+import java.util.Random;
 
 public class AddOrderModal {
+    @FXML
+    private Label orderIDL;
 
     @FXML
     private TextField bookId;
@@ -41,6 +44,8 @@ public class AddOrderModal {
                 String status= fio[1];
                 statusL.setText(status);
                 titleL.setText(title);
+                Random random = new Random();
+                orderIDL.setText(String.valueOf(random.nextInt(100000)+1));
 
 
             } catch (IOException e) {
@@ -61,13 +66,15 @@ public class AddOrderModal {
             String idReader=Connect.id;
             String status = statusL.getText();
             String bookTitle =titleL.getText();
+            String orderID = orderIDL.getText();
 
             if(status.equals("Не определенo")){
                 SceneChanger.changeScene("Ошибка",SceneName.DELETEERRORBOOK,true);
                 Connect.client.sendMessage("notOk");
             }
             else {
-                Order order = new Order(idReader,idBook,bookTitle);
+                Order order = new Order(idReader,idBook,orderID,bookTitle);
+//                Order order = new Order(idReader,idBook,bookTitle);
                 Connect.client.sendMessage("ok");
                 Connect.client.sendObject(order);
                 SceneChanger.changeScene("Завершено",SceneName.DELETEOKBOOK,true);

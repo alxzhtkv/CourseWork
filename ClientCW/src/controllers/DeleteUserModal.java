@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class DeleteBookModal {
+public class DeleteUserModal {
 
     @FXML
     private TextField IdField;
@@ -19,7 +19,7 @@ public class DeleteBookModal {
     @FXML
     void clickDelete(ActionEvent event) {
         delete.setOnAction(actionEvent -> {
-            Connect.client.sendMessage("deleteBook");
+            Connect.client.sendMessage("deleteUser");
             String id=IdField.getText();
             Connect.client.sendMessage(id);
             String mess=null;

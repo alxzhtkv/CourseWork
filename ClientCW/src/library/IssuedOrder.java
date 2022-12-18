@@ -14,6 +14,8 @@ public class IssuedOrder extends Order {
         this.dateB = dateB;
     }
 
+
+
     public IssuedOrder(String readerID, String booksID, String orderID, String status, String bookTitle, String dateI, String dateB) {
         super(readerID, booksID, orderID, status, bookTitle);
         this.dateI = dateI;

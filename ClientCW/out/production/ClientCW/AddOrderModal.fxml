@@ -7,8 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="270.0" prefWidth="318.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddOrderModal">
+<AnchorPane prefHeight="301.0" prefWidth="318.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddOrderModal">
    <children>
       <Text layoutX="81.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Оформление заказа">
          <font>
@@ -17,11 +16,13 @@
       </Text>
       <Text layoutX="25.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите ID  книги, на которую оформляется заказ" wrappingWidth="224.94140625" />
       <TextField fx:id="bookId" layoutX="25.0" layoutY="100.0" />
-      <Button fx:id="send" layoutX="113.0" layoutY="221.0" mnemonicParsing="false" onAction="#clickSend" text="Оформить" />
+      <Button fx:id="send" layoutX="113.0" layoutY="250.0" mnemonicParsing="false" onAction="#clickSend" text="Оформить" />
       <Label fx:id="titleL" layoutX="74.0" layoutY="145.0" prefHeight="18.0" prefWidth="225.0" />
       <Button fx:id="check" layoutX="194.0" layoutY="100.0" mnemonicParsing="false" onAction="#clickCheck" text="Ok" />
       <Text layoutX="26.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Книга:" />
       <Text layoutX="24.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Статус:" />
       <Label fx:id="statusL" layoutX="74.0" layoutY="177.0" prefHeight="18.0" prefWidth="225.0" />
+      <Text layoutX="26.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Номер заказа:" />
+      <Label fx:id="orderIDL" layoutX="118.0" layoutY="210.0" prefHeight="26.0" prefWidth="87.0" textFill="#962b2b" />
    </children>
 </AnchorPane>

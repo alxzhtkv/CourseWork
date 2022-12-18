@@ -566,18 +566,75 @@ public class Database {
         return flag;
     }
 
+
+
+
+
     public Boolean deleteBookByID(String id){
         boolean flag=false;
+        String status="";
         try {
             ResultSet resultSet=statement.executeQuery("SELECT * FROM LibraryBooks WHERE (IDbook ="+ id +")" );
 //            +"AND (password ="+ user.getPassword().toString() + ")"
             if (resultSet.next()){
-                flag=true;
+                status=resultSet.getString(7);
+                if(status.equals("в наличии")){
+                    flag=true;
+                }
+
+
                 System.out.println("запись есть!");
             }
             if(flag){
                 String sql = "DELETE FROM LibraryBooks " +
                         "WHERE (IDbook ="+id+")";
+                statement.executeUpdate(sql);
+            }
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+        return flag;
+    }
+
+    public Boolean deleteUserByID(String id){
+        boolean flag=false;
+        String status="";
+        try {
+            ResultSet resultSet=statement.executeQuery("SELECT * FROM LibraryUser WHERE (login ="+ id +")" );
+
+            if (resultSet.next()){
+                System.out.println("нашел юзера");
+
+                ResultSet resultSetOrder =statement.executeQuery("SELECT status FROM LibraryOrders WHERE (readerID ="+ id +")" );
+                if(resultSetOrder.next()){
+                    System.out.println("нашел заказы");
+                    status=resultSetOrder.getString(1);
+                    if(status.equals("обработан")){
+                        System.out.println("заказ обработан");
+                        flag=true;
+                    }
+                } else {
+                    System.out.println("не нашел заказы");
+                    flag=true;
+                }
+                System.out.println("запись есть!");
+            }
+            if(flag){
+                String sql = "DELETE FROM LibraryOrders " +
+                        "WHERE (readerID ="+id+")";
+                statement.executeUpdate(sql);
+                sql = "DELETE FROM LibraryReader " +
+                        "WHERE (login ="+id+")";
+                statement.executeUpdate(sql);
+                sql = "DELETE FROM LibraryUser " +
+                        "WHERE (login ="+id+")";
                 statement.executeUpdate(sql);
             }
 

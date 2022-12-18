@@ -44,6 +44,7 @@ public class Order implements Serializable {
         this.status="обработан";
         this.bookTitle=bookTitle;
     }
+//    (order,reader,bookID,book,Idate,Bdate)
 
     public String getReaderID() {
         return readerID;

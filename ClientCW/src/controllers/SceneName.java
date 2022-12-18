@@ -30,6 +30,16 @@ public class SceneName {
 
     public static String REPORTSMODAL="/ReportsModal.fxml";
 
+    public static String USERMANAGERWINDOW="/UserManagerWindow.fxml";
+
+    public static String DELETEUSERMODAL="/DeleteUserModal.fxml";
+
+
+    public static String INFORDERMODAL="/InfOrderModal.fxml";
+
+
+
+
 
 
 
