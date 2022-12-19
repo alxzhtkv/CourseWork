@@ -64,8 +64,9 @@ public class AuthorizationWindow {
                     break;
                 }
                 case "refused": {
-//                    error.setText("Неверный логин или пароль");
-//                    error.setVisible(true);
+                    SceneChanger.changeScene("Ошибка",SceneName.DELETEERRORBOOK,true);
+
+
                     break;
                 }
             }

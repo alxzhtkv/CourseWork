@@ -2,17 +2,22 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DeleteErrorBook">
    <children>
-      <Button fx:id="Ok" layoutX="134.0" layoutY="144.0" mnemonicParsing="false" onAction="#clickOk" text="Ок" />
-      <Text layoutX="120.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ошибка!">
+      <Button fx:id="Ok" layoutX="134.0" layoutY="151.0" mnemonicParsing="false" onAction="#clickOk" text="Ок" />
+      <Text layoutX="109.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ошибка!">
          <font>
-            <Font size="15.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="27.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Проверьте корректность введенных данных" />
+      <Text layoutX="87.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Некорректные данные" />
+      <Circle fill="#ff0000b9" layoutX="57.0" layoutY="64.0" radius="23.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line endX="23.000022888183594" endY="13.400009155273438" layoutX="45.0" layoutY="61.0" startX="2.1999740600585938" startY="-5.799999237060547" strokeWidth="5.0" />
+      <Line endX="12.199974060058594" endY="-17.400005340576172" layoutX="55.0" layoutY="71.0" startX="-7.800025939941406" startY="4.1999969482421875" strokeWidth="5.0" />
    </children>
 </AnchorPane>
