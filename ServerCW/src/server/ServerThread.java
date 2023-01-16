@@ -455,10 +455,23 @@ public class ServerThread implements Runnable{
                     case "editReaderInfo":{
                         Reader readerInfo = (Reader) sois.readObject();
                         database.editReaderInfo(readerInfo);
-
-
-
                         break;
+                    }
+
+
+                    case "deleteFavourites":{
+                        Favourites favourite = (Favourites) sois.readObject();
+                        boolean flag = database.deleteFavouritesByBookID(favourite);
+                        System.out.println(flag);
+                        serverMessage ="ok";
+                        if(flag){
+                            soos.writeObject(serverMessage);
+                        }else {
+                            serverMessage ="error";
+                            soos.writeObject(serverMessage);
+                        }
+                        break;
+
                     }
 
                     case "createDiagram":{

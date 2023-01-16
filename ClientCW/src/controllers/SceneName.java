@@ -47,6 +47,9 @@ public class SceneName {
 
     public static String SHOWISSUEDORDERSMODAL = "/IssuedBooksModal.fxml";
 
+    public static String DELETEFAVOURITESMODAL = "/DeleteFavouritesModal.fxml";
+
+
 
 
 

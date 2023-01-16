@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DeleteFavouritesModal">
+   <children>
+      <Text layoutX="65.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Удаление избранного">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="28.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите ID избранной книги:" />
+      <TextField fx:id="FavouritesIDfield" layoutX="28.0" layoutY="100.0" />
+      <Button fx:id="deleteFavourites" layoutX="116.0" layoutY="147.0" mnemonicParsing="false" onAction="#clickDeleteFavourites" text="Удалить" />
+   </children>
+</AnchorPane>

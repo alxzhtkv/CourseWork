@@ -684,6 +684,41 @@ public class Database {
 
         return flag;
     }
+
+
+    public boolean deleteFavouritesByBookID(Favourites favourite){
+        boolean flag=false;
+        String id="";
+
+        try {
+            ResultSet resultSet =statement.executeQuery("SELECT * FROM LibraryFavourites WHERE (readerID ="+ favourite.getReaderID() +")" );
+
+            if(resultSet.next()){
+                id=resultSet.getString(1);
+                while (resultSet.next()){
+                    String bookID = resultSet.getString(3);
+
+                    if(bookID.equals(favourite.getBookID())){
+                        flag=true;
+                        break;
+                    }
+                }
+
+            }
+            if(flag){
+                String sql = "DELETE FROM LibraryFavourites " +
+                             "WHERE (id ="+id+")";
+                statement.executeUpdate(sql);
+                System.out.println("a record in the FavouritesTable has been deleted");
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
     public  Vector<Book> searchBook(String value){
         Vector<Book> booksTemp=new Vector<Book>();
         boolean flag=false;

@@ -259,6 +259,9 @@ public class ReaderWindow {
 
     @FXML
     void clickDeleteFavourites(ActionEvent event) {
+        deleteFavourites.setOnAction(actionEvent -> {
+            SceneChanger.changeScene("Удаление избранного",SceneName.DELETEFAVOURITESMODAL,true);
+        });
 
     }
 
