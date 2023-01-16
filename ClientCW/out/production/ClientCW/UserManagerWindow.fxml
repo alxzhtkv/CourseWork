@@ -3,10 +3,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: wheat;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserManagerWindow">
    <children>
-      <Button fx:id="delete" layoutX="186.0" layoutY="242.0" mnemonicParsing="false" onAction="#clickDelete" prefHeight="26.0" prefWidth="212.0" text="Удалить пользователя" />
       <Button fx:id="showUsers" layoutX="187.0" layoutY="187.0" mnemonicParsing="false" onAction="#clickShowUsers" text="Посмотреть данные пользователей" />
       <Button fx:id="showReaders" layoutX="187.0" layoutY="134.0" mnemonicParsing="false" onAction="#clickShowReaders" prefHeight="26.0" prefWidth="212.0" text="Посмотреть данные читателей" />
    </children>

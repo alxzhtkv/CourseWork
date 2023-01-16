@@ -220,7 +220,7 @@ public class Database {
     }
 
     public void insertBook(Book book){
-        String SQL = "INSERT INTO LibraryBooks(IDbook,title,author,publisher,genre,yearBook, countBooks) "
+        String SQL = "INSERT INTO LibraryBooks(IDbook,title,author,publisher,genre,yearBook,status) "
                 + "VALUES(?,?,?,?,?,?,?)";
 
         try {
@@ -804,6 +804,30 @@ public class Database {
                 String status = resultSet.getString(6);
                 Order order = new Order(readerId,bookID,orderID,status,bookTitle);
 //                Request request = new Request(readerId,bookTitle);
+                ordersTemp.add(order);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ordersTemp;
+    }
+
+    public Vector<IssuedOrder> getIssuedOrderByReaderID(String readerId){
+        Vector<IssuedOrder> ordersTemp=new Vector<IssuedOrder>();
+
+        try {
+            ResultSet resultSet=statement.executeQuery("SELECT * FROM `LibraryIssuedOrders`  WHERE (readerID ="+readerId+")" );
+            while (resultSet.next()){
+
+                String orderID = resultSet.getString(2);
+                String bookID = resultSet.getString(3);
+                String bookTitle = resultSet.getString(4);
+                String dateI = resultSet.getString(6);
+                String dateB = resultSet.getString(6);
+                IssuedOrder order = new IssuedOrder(orderID,readerId,bookID,bookTitle,dateI,dateB);
                 ordersTemp.add(order);
             }
 

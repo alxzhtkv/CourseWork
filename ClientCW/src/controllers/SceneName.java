@@ -39,6 +39,15 @@ public class SceneName {
 
     public static String DELETEORDERMODAL ="/DeleteOrderModal.fxml";
 
+    public static String EDITBOOKWINDOW ="/EditBookWindow.fxml";
+
+    public static String SHOWUSERSMODAL ="/ShowUsersModal.fxml";
+
+    public static String SHOWREADERSMODAL ="/ShowReadersModal.fxml";
+
+    public static String SHOWISSUEDORDERSMODAL = "/IssuedBooksModal.fxml";
+
+
 
 
 

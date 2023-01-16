@@ -26,11 +26,19 @@ public class UserManagerWindow {
 
     @FXML
     void clickShowReaders(ActionEvent event) {
+        showReaders.setOnAction(actionEvent -> {
+            SceneChanger.changeScene("Просмотр данных читателей",SceneName.DELETEUSERMODAL,true);
+
+        });
 
     }
 
     @FXML
     void clickShowUsers(ActionEvent event) {
+        showUsers.setOnAction(actionEvent -> {
+            SceneChanger.changeScene("Просмотр данных пользователей",SceneName.DELETEUSERMODAL,true);
+
+        });
 
     }
 

@@ -49,7 +49,7 @@ public class BookManagerWindow {
     @FXML
     void clickAdd(ActionEvent event) {
         add.setOnAction(actionEvent -> {
-            SceneChanger.changeScene("Вход",SceneName.ADDBOOKWINDOW,false);
+            SceneChanger.changeScene("Добавление книги",SceneName.ADDBOOKWINDOW,false);
 
 
         });
@@ -62,7 +62,7 @@ public class BookManagerWindow {
     @FXML
     void clickBack(ActionEvent event) {
         back.setOnAction(actionEvent -> {
-            SceneChanger.changeScene("Вход",SceneName.ADMINWINDOW,false);
+            SceneChanger.changeScene("Меню",SceneName.ADMINWINDOW,false);
         });
 
     }
@@ -79,6 +79,11 @@ public class BookManagerWindow {
 
     @FXML
     void clickEdit(ActionEvent event) {
+        edit.setOnAction(actionEvent -> {
+            SceneChanger.changeScene("Редактирование",SceneName.EDITBOOKWINDOW,true);
+
+
+        });
 
     }
 

@@ -463,6 +463,11 @@ public class ReaderWindow {
     @FXML
     void clickIssuedOrders(ActionEvent event) {
 
+        issuedOrders.setOnAction(actionEvent -> {
+
+            SceneChanger.changeScene("Просмотр заказов",SceneName.SHOWISSUEDORDERSMODAL,true);
+        });
+
     }
     @FXML
     void clickShowOrders(ActionEvent event) {

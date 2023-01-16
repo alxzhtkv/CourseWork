@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: wheat;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditBookWindow">
+   <children>
+      <Button fx:id="addBook" layoutX="256.0" layoutY="312.0" mnemonicParsing="false" onAction="#clickAddBook" text="Отредатировать" />
+      <Button fx:id="back" layoutX="256.0" layoutY="349.0" mnemonicParsing="false" onAction="#clickBack" prefHeight="26.0" prefWidth="106.0" text="Назад" />
+      <ChoiceBox fx:id="genreField" layoutX="130.0" layoutY="217.0" prefWidth="150.0">
+         <items>
+         <FXCollections fx:factory="observableArrayList">
+            <String fx:value="Роман" />
+            <String fx:value="Детектив" />
+            <String fx:value="Фантастика" />
+            <String fx:value="Фентези" />
+            <String fx:value="Сказка" />
+            <String fx:value="Трагедия" />
+            <String fx:value="Другое" />
+         </FXCollections>
+         </items>
+
+
+      </ChoiceBox>
+      <Label fx:id="idL" layoutX="154.0" layoutY="113.0" />
+      <Text layoutX="42.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Название:" />
+      <Text layoutX="43.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:" />
+      <Text layoutX="42.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Автор:" />
+      <Text layoutX="42.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Издательство:" />
+      <Text layoutX="43.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Жанр:" />
+      <Text layoutX="42.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Год издания:" wrappingWidth="105.26641845703125" />
+      <TextField fx:id="titleField" layoutX="131.0" layoutY="100.0" />
+      <TextField fx:id="authorField" layoutX="131.0" layoutY="140.0" />
+      <TextField fx:id="publisherField" layoutX="131.0" layoutY="180.0" />
+      <TextField fx:id="yearField" layoutX="130.0" layoutY="259.0" prefHeight="26.0" prefWidth="55.0" />
+      <Button fx:id="search" layoutX="323.0" layoutY="63.0" mnemonicParsing="false" onAction="#clickSearch" prefHeight="26.0" prefWidth="70.0" text="Найти" />
+      <TextField fx:id="IDField" layoutX="130.0" layoutY="63.0" />
+   </children>
+</AnchorPane>
