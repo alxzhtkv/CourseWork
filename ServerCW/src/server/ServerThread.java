@@ -452,6 +452,15 @@ public class ServerThread implements Runnable{
                         break;
                     }
 
+                    case "editReaderInfo":{
+                        Reader readerInfo = (Reader) sois.readObject();
+                        database.editReaderInfo(readerInfo);
+
+
+
+                        break;
+                    }
+
                     case "createDiagram":{
                         Vector<String> data = database.getGenreForDiagram();
                         serverMessage=Integer.toString(data.size());

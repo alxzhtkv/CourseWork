@@ -113,6 +113,8 @@ public class ReaderWindow {
 
     @FXML
     void clickEdit(ActionEvent event) {
+        Connect.client.sendMessage("editReaderInfo");
+
         String id = idLabel.getText();
         String passport = passsportField.getText();
         String surname = surnameField.getText();
@@ -122,6 +124,11 @@ public class ReaderWindow {
         String birthday = birthdayField.getText();
         String password = passwordField.getText();
         Reader reader = new Reader(id,password,name,surname,patronymic,passport,phone,birthday);
+        Connect.client.sendObject(reader);
+
+        SceneChanger.changeScene("Редактирование завершено",SceneName.DELETEOKBOOK,true);
+
+
 
     }
 
