@@ -125,6 +125,14 @@ public class ServerThread implements Runnable{
 //
                         break;
                     }
+                    case "getBookByID":{
+                        String bookID = (String) sois.readObject();
+                        Book neededBook = database.searchBookByID(bookID);
+                        soos.writeObject(neededBook);
+
+
+                        break;
+                    }
                     case "deleteBook":{
 
                         answer = (String) sois.readObject();
@@ -155,6 +163,13 @@ public class ServerThread implements Runnable{
 
                         break;
                     }
+
+                    case "editBook":{
+                        Book bookInfo = (Book) sois.readObject();
+                        database.editBookInfo(bookInfo);
+                        break;
+                    }
+
                     case "showReaders":{
                         Vector<Reader> readersVector= database.getReadersFromDatabase();
                         int size=readersVector.size();

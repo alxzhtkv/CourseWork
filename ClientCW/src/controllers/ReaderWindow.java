@@ -164,8 +164,8 @@ public class ReaderWindow {
             System.out.println(Connect.id);
             Reader reader = (Reader) Connect.client.readObject();
           ;
-            System.out.println( "yfyfyf "+Connect.id);
-            System.out.println( "aaaa "+reader.getName());
+//            System.out.println( "yfyfyf "+Connect.id);
+//            System.out.println( "aaaa "+reader.getName());
             idLabel.setText(reader.getLogin());
             passsportField.setText(reader.getPassportID());
             surnameField.setText(reader.getSurname());

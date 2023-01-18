@@ -331,7 +331,7 @@ public class Database {
                 String year=resultSet.getString(6);
                 String count =resultSet.getString(7);
                 Book book = new Book(ID,title,publisher,genre,year,count,author);
-                System.out.println(book.getTitle());
+
                 booksTemp.add(book);
 
             }
@@ -342,6 +342,64 @@ public class Database {
         }
 
         return booksTemp;
+    }
+
+    public Book searchBookByID(String id){
+        String undefined = "не определено";
+        Book book = new Book(id,undefined,undefined,undefined,undefined,undefined,undefined);
+        try {
+            ResultSet resultSet=statement.executeQuery("SELECT * FROM `LibraryBooks` WHERE (IDbook ="+id+")"  );
+            if (resultSet.next()){
+
+                String title=resultSet.getString(2);
+                String author = resultSet.getString(3);
+                String publisher=resultSet.getString(4);
+                String genre=resultSet.getString(5);
+                String year=resultSet.getString(6);
+                String status =resultSet.getString(7);
+
+                book.setTitle(title);
+                book.setAuthor(author);
+                book.setPublisher(publisher);
+                book.setGenre(genre);
+                book.setYear(year);
+                book.setCount(status);
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return book;
+    }
+
+    public void editBookInfo(Book book){
+
+
+//        String SQL="UPDATE libraryUser SET password=? WHERE login="+reader.getLogin();
+//        PreparedStatement  preparedStmt=connection.prepareStatement(SQL);
+//        preparedStmt.setString(1,reader.getPassword());
+//
+//        preparedStmt.executeUpdate();
+//        System.out.println("Table User is update");
+
+        String SQL="UPDATE libraryBooks SET title=?, author=?, publisher=?, genre=?, yearBook=? WHERE IDbook="+book.getID();
+        PreparedStatement preparedStmt = null;
+        try {
+            preparedStmt = connection.prepareStatement(SQL);
+            preparedStmt.setString (1, book.getTitle());
+            preparedStmt.setString(2,book.getAuthor());
+            preparedStmt.setString(3, book.getPublisher());
+            preparedStmt.setString(4, book.getGenre());
+            preparedStmt.setString(5, book.getYear());
+
+            preparedStmt.executeUpdate();
+            System.out.println("Table Books is update");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 
     public String getTitleBookByID(String id){
@@ -611,21 +669,21 @@ public class Database {
             ResultSet resultSet=statement.executeQuery("SELECT * FROM LibraryUser WHERE (login ="+ id +")" );
 
             if (resultSet.next()){
-                System.out.println("нашел юзера");
+
 
                 ResultSet resultSetOrder =statement.executeQuery("SELECT status FROM LibraryOrders WHERE (readerID ="+ id +")" );
                 if(resultSetOrder.next()){
-                    System.out.println("нашел заказы");
+
                     status=resultSetOrder.getString(1);
                     if(status.equals("обработан")){
-                        System.out.println("заказ обработан");
+
                         flag=true;
                     }
                 } else {
-                    System.out.println("не нашел заказы");
+
                     flag=true;
                 }
-                System.out.println("запись есть!");
+
             }
             if(flag){
                 String sql = "DELETE FROM LibraryOrders " +
@@ -659,7 +717,7 @@ public class Database {
 
                 ResultSet resultSet =statement.executeQuery("SELECT status FROM LibraryOrders WHERE (orderID ="+ id +")" );
                 if(resultSet.next()){
-                    System.out.println("нашел заказы");
+
                     status=resultSet.getString(1);
                     if(status.equals("обработан")){
                         flag=true;
@@ -734,10 +792,10 @@ public class Database {
                     String publisher=resultSet.getString(4);
                     String genre=resultSet.getString(5);
                     String year=resultSet.getString(6);
-                    String count =resultSet.getString(7);
-                    if(value.equals(ID)==true || value.equals(title)==true  ||value.equals(author)==true  ||value.equals(publisher)==true  ||value.equals(genre) ==true || value.equals(year)==true  || value.equals(year)==true ){
+                    String status =resultSet.getString(7);
+                    if(value.equals(ID)==true || value.equals(title)==true  ||value.equals(author)==true  ||value.equals(publisher)==true  ||value.equals(genre) ==true || value.equals(year)==true  || value.equals(status)==true ){
 
-                        Book book = new Book(ID,title,publisher,genre,year,count,author);
+                        Book book = new Book(ID,title,publisher,genre,year,status,author);
                         System.out.println(book.getTitle());
                         booksTemp.add(book);
                     }
@@ -1167,14 +1225,5 @@ public class Database {
         System.out.println("Table Reader is update");
 
     }
-//    public void authorsSort(){
-//        String SQL="ALTER TABLE LibraryBooks ORDER BY title";
-//
-//        try {
-//            statement.executeUpdate(SQL);
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//    }
+
 }

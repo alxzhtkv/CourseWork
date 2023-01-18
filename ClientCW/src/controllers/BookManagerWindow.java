@@ -80,7 +80,7 @@ public class BookManagerWindow {
     @FXML
     void clickEdit(ActionEvent event) {
         edit.setOnAction(actionEvent -> {
-            SceneChanger.changeScene("Редактирование",SceneName.EDITBOOKWINDOW,true);
+            SceneChanger.changeScene("Редактирование",SceneName.EDITBOOKWINDOW,false);
 
 
         });

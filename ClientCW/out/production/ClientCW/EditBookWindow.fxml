@@ -13,7 +13,7 @@
    <children>
       <Button fx:id="addBook" layoutX="256.0" layoutY="312.0" mnemonicParsing="false" onAction="#clickAddBook" text="Отредатировать" />
       <Button fx:id="back" layoutX="256.0" layoutY="349.0" mnemonicParsing="false" onAction="#clickBack" prefHeight="26.0" prefWidth="106.0" text="Назад" />
-      <ChoiceBox fx:id="genreField" layoutX="130.0" layoutY="217.0" prefWidth="150.0">
+      <ChoiceBox fx:id="genreField" layoutX="131.0" layoutY="198.0" prefWidth="150.0">
          <items>
          <FXCollections fx:factory="observableArrayList">
             <String fx:value="Роман" />
@@ -28,18 +28,20 @@
 
 
       </ChoiceBox>
-      <Label fx:id="idL" layoutX="154.0" layoutY="113.0" />
-      <Text layoutX="42.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Название:" />
-      <Text layoutX="43.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:" />
-      <Text layoutX="42.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Автор:" />
-      <Text layoutX="42.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Издательство:" />
-      <Text layoutX="43.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Жанр:" />
-      <Text layoutX="42.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Год издания:" wrappingWidth="105.26641845703125" />
-      <TextField fx:id="titleField" layoutX="131.0" layoutY="100.0" />
-      <TextField fx:id="authorField" layoutX="131.0" layoutY="140.0" />
-      <TextField fx:id="publisherField" layoutX="131.0" layoutY="180.0" />
-      <TextField fx:id="yearField" layoutX="130.0" layoutY="259.0" prefHeight="26.0" prefWidth="55.0" />
-      <Button fx:id="search" layoutX="323.0" layoutY="63.0" mnemonicParsing="false" onAction="#clickSearch" prefHeight="26.0" prefWidth="70.0" text="Найти" />
-      <TextField fx:id="IDField" layoutX="130.0" layoutY="63.0" />
+      <Label fx:id="idL" layoutX="155.0" layoutY="94.0" />
+      <Text layoutX="43.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Название:" />
+      <Text layoutX="44.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:" />
+      <Text layoutX="43.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Автор:" />
+      <Text layoutX="43.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Издательство:" />
+      <Text layoutX="44.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Жанр:" />
+      <Text layoutX="43.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Год издания:" wrappingWidth="105.26641845703125" />
+      <TextField fx:id="titleField" layoutX="132.0" layoutY="81.0" />
+      <TextField fx:id="authorField" layoutX="132.0" layoutY="121.0" />
+      <TextField fx:id="publisherField" layoutX="132.0" layoutY="161.0" />
+      <TextField fx:id="yearField" layoutX="131.0" layoutY="240.0" prefHeight="26.0" prefWidth="55.0" />
+      <Button fx:id="search" layoutX="324.0" layoutY="44.0" mnemonicParsing="false" onAction="#clickSearch" prefHeight="26.0" prefWidth="70.0" text="Найти" />
+      <TextField fx:id="IDField" layoutX="131.0" layoutY="44.0" />
+      <Text layoutX="43.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Статус" wrappingWidth="70.39999999999986" />
+      <TextField fx:id="statusField" layoutX="131.0" layoutY="276.0" prefHeight="26.0" prefWidth="96.0" />
    </children>
 </AnchorPane>

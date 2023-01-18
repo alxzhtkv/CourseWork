@@ -1,6 +1,8 @@
 package library;
 
-public class Book extends Publication {
+import java.io.Serializable;
+
+public class Book extends Publication implements Serializable {
     String author;
 
 
