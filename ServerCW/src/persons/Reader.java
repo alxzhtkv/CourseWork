@@ -1,6 +1,8 @@
 package persons;
 
-public class Reader extends User {
+import java.io.Serializable;
+
+public class Reader extends User implements Serializable {
     private String name;
     private String surname;
     private String patronymic;

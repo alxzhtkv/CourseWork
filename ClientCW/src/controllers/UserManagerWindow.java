@@ -6,18 +6,16 @@ import javafx.scene.control.Button;
 
 public class UserManagerWindow {
 
-    @FXML
-    private Button delete;
 
     @FXML
     private Button showReaders;
 
     @FXML
-    private Button showUsers;
+    private Button deleteUsers;
 
     @FXML
-    void clickDelete(ActionEvent event) {
-        delete.setOnAction(actionEvent -> {
+    void clickDeleteUsers(ActionEvent event) {
+        deleteUsers.setOnAction(actionEvent -> {
             SceneChanger.changeScene("Удаление",SceneName.DELETEUSERMODAL,true);
 
         });
@@ -27,19 +25,11 @@ public class UserManagerWindow {
     @FXML
     void clickShowReaders(ActionEvent event) {
         showReaders.setOnAction(actionEvent -> {
-            SceneChanger.changeScene("Просмотр данных читателей",SceneName.DELETEUSERMODAL,true);
+            SceneChanger.changeScene("Просмотр данных читателей",SceneName.SHOWREADERSMODAL,true);
 
         });
 
     }
 
-    @FXML
-    void clickShowUsers(ActionEvent event) {
-        showUsers.setOnAction(actionEvent -> {
-            SceneChanger.changeScene("Просмотр данных пользователей",SceneName.DELETEUSERMODAL,true);
-
-        });
-
-    }
 
 }

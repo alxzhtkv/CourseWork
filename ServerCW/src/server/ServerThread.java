@@ -179,7 +179,8 @@ public class ServerThread implements Runnable{
                         soos.writeObject(serverMessage);
 
                         while (i<size){
-                            sendReader(readersVector.get(i));
+                            soos.writeObject(readersVector.get(i));
+//                            sendReader(readersVector.get(i));
                             i++;
                         }
 
@@ -197,7 +198,8 @@ public class ServerThread implements Runnable{
                         soos.writeObject(serverMessage);
 
                         while (i<size){
-                            sendUser(usersVector.get(i));
+                            soos.writeObject(usersVector.get(i));
+//                            sendUser(usersVector.get(i));
                             i++;
                         }
 

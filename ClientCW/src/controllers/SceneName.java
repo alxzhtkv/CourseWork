@@ -2,7 +2,7 @@ package controllers;
 
 public class SceneName {
 
-//    public static String REGMENU ="/regWindow.fxml" ;
+
     public static String STARTWINDOW ="/StartWindow.fxml";
     public static String SIGNINWINDOW ="/AuthorizationWindow.fxml" ;
     public static String REGWINDOW ="/RegistrationWindow.fxml" ;
@@ -41,7 +41,7 @@ public class SceneName {
 
     public static String EDITBOOKWINDOW ="/EditBookWindow.fxml";
 
-    public static String SHOWUSERSMODAL ="/ShowUsersModal.fxml";
+
 
     public static String SHOWREADERSMODAL ="/ShowReadersModal.fxml";
 
